@@ -17,31 +17,31 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        if (request()->routeIs('services.ingenieria')) {
-            $ingenieria = Service::where('status', 'Ingeniería')
+        if (request()->routeIs('services.engineering')) {
+            $engineering = Service::where('status', 'Ingeniería')
                 ->orderBy('created_at', 'desc')
-                ->paginate(12, ['*'], 'ingenieria')
-                ->through(fn ($item) => [
-                    ...$item->toArray(),
-                    'attached_file' => Storage::disk('services')->url($item->attached_file),
-                ]);
+                ->get()
+                ->map(function ($engineering) {
+                    $engineering->attached_file = Storage::disk('services')->url($engineering->attached_file);
+                    return $engineering;
+                });
 
-            return Inertia::render('service/index-ingenieria', [
-                'ingenieria' => $ingenieria,
+            return Inertia::render('service/index-engineering', [
+                'engineering' => $engineering,
             ]);
         }
 
-        if (request()->routeIs('services.construccion')) {
-            $construccion = Service::where('status', 'Construcción')
+        if (request()->routeIs('services.construction')) {
+            $construction = Service::where('status', 'Construcción')
                 ->orderBy('created_at', 'desc')
-                ->paginate(12, ['*'], 'construccion')
-                ->through(fn ($item) => [
-                    ...$item->toArray(),
-                    'attached_file' => Storage::disk('services')->url($item->attached_file),
-                ]);
+                ->get()
+                ->map(function ($item) {
+                    $item->attached_file = Storage::disk('services')->url($item->attached_file);
+                    return $item;
+                });
 
-            return Inertia::render('service/index-construccion', [
-                'construccion' => $construccion,
+            return Inertia::render('service/index-construction', [
+                'construction' => $construction,
             ]);
         }
 

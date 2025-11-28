@@ -11,8 +11,12 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/ingenieria', [ServiceController::class, 'index'])->name('services.ingenieria');
-Route::get('/construccion', [ServiceController::class, 'index'])->name('services.construccion');
+Route::get('/us', function () {
+    return Inertia::render('us');
+})->name('us');
+
+Route::get('/engineering', [ServiceController::class, 'index'])->name('services.engineering');
+Route::get('/construction', [ServiceController::class, 'index'])->name('services.construction');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
