@@ -1,6 +1,6 @@
 import AppLayout from "@/layouts/app-layout";
 import { Head, useForm } from "@inertiajs/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { type BreadcrumbItem } from "@/types";
 
 interface Service {
@@ -30,10 +30,6 @@ export default function ShowService({ service }: Props) {
 
     const [preview, setPreview] = useState<string | null>(service.attached_file ?? null);
     const [message, setMessage] = useState(["Actualiza los datos necesarios del servicio.", true]);
-
-    useEffect(() => {
-        if (service.attached_file) setPreview(service.attached_file);
-    }, [service.attached_file]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
