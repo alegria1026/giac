@@ -15,7 +15,6 @@ export default function ServiceCard({ name, description, image }: Props) {
             <div className="p-4">
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">{name}</h3>
                 <p className="text-sm text-gray-600">{description}</p>
-                <p>{image}</p>
             </div>
         </div>
     );

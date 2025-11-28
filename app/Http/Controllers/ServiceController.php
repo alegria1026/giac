@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateServiceRequest;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
@@ -121,16 +122,42 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
-        //
+        $validated = $request->validated();
+
+        if ($request->hasFile('attached_file')) {
+            if ($service->attached_file) {
+                Storage::disk('services')->delete($service->attached_file);
+            }
+
+            $file = $request->file('attached_file');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('', $fileName, 'services');
+
+            $validated['attached_file'] = $path;
+        }
+
+        if (!isset($validated['attached_file'])) {
+            $validated['attached_file'] = $service->attached_file;
+        }
+
+        $service->update($validated);
+
+        return to_route('services.index')->with('status', 'Servicio actualizado correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Service $service)
     {
-        //
+        if ($service->attached_file) {
+            Storage::disk('services')->delete($service->attached_file);
+        }
+
+        $service->delete();
+
+        return to_route('services.index')->with('status', 'Servicio eliminado correctamente.');
     }
 }
