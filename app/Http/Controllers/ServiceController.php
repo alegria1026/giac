@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use App\Http\Requests\ServiceRequest;
 
@@ -18,7 +19,11 @@ class ServiceController extends Controller
         if (request()->routeIs('services.ingenieria')) {
             $ingenieria = Service::where('status', 'Ingeniería')
                 ->orderBy('created_at', 'desc')
-                ->paginate(12, ['*'], 'ingenieria');
+                ->paginate(12, ['*'], 'ingenieria')
+                ->through(fn ($item) => [
+                    ...$item->toArray(),
+                    'attached_file' => Storage::disk('services')->url($item->attached_file),
+                ]);
 
             return Inertia::render('service/index-ingenieria', [
                 'ingenieria' => $ingenieria,
@@ -28,7 +33,11 @@ class ServiceController extends Controller
         if (request()->routeIs('services.construccion')) {
             $construccion = Service::where('status', 'Construcción')
                 ->orderBy('created_at', 'desc')
-                ->paginate(12, ['*'], 'construccion');
+                ->paginate(12, ['*'], 'construccion')
+                ->through(fn ($item) => [
+                    ...$item->toArray(),
+                    'attached_file' => Storage::disk('services')->url($item->attached_file),
+                ]);
 
             return Inertia::render('service/index-construccion', [
                 'construccion' => $construccion,
@@ -37,11 +46,19 @@ class ServiceController extends Controller
 
         $ingenieria = Service::where('status', 'Ingeniería')
             ->orderBy('created_at', 'desc')
-            ->paginate(10, ['*'], 'ingenieria');
+            ->paginate(10, ['*'], 'ingenieria')
+            ->through(fn ($item) => [
+                ...$item->toArray(),
+                'attached_file' => Storage::disk('services')->url($item->attached_file),
+            ]);
 
         $construccion = Service::where('status', 'Construcción')
             ->orderBy('created_at', 'desc')
-            ->paginate(10, ['*'], 'construccion');
+            ->paginate(10, ['*'], 'construccion')
+            ->through(fn ($item) => [
+                ...$item->toArray(),
+                'attached_file' => Storage::disk('services')->url($item->attached_file),
+            ]);
 
         return Inertia::render('service/index-auth', [
             'ingenieria' => $ingenieria,
