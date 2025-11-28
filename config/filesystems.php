@@ -60,6 +60,14 @@ return [
             'report' => false,
         ],
 
+        'services' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/services'),
+            'url' => env('APP_URL').'/storage/services',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*
@@ -75,6 +83,7 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('tickets') => storage_path('app/tickets'),
     ],
 
 ];
