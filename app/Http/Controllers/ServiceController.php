@@ -103,15 +103,19 @@ class ServiceController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        $service = Service::findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return Inertia::render('service/show-service', [
+            'service' => [
+                'id' => $service->id,
+                'name' => $service->name,
+                'description' => $service->description,
+                'status' => $service->status,
+                'attached_file' => $service->attached_file
+                    ? Storage::disk('services')->url($service->attached_file)
+                    : null,
+            ]
+        ]);
     }
 
     /**
