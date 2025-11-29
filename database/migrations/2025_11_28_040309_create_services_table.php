@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('name')->nullable(false);
             $table->string('description')->nullable(false);
-            $table->enum('status', ['Ingeniería', 'Construcción']);
+            $table->enum('category', ['Ingeniería', 'Construcción']);
             $table->string('attached_file', 255)->nullable(false);
             $table->timestamps();
         });
