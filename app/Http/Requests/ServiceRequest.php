@@ -24,7 +24,7 @@ class ServiceRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
             'description' => ['required', 'string', 'min:3', 'max:255'],
-            'status' => ['required', 'in:Ingeniería,Construcción'],
+            'category' => ['required', 'in:Ingeniería,Construcción'],
             'attached_file' => ['required', 'image', 'max:5120'],
         ];
     }

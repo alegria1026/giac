@@ -10,7 +10,7 @@ class Service extends Model
         'user_id',
         'name',
         'description',
-        'status',
+        'category',
         'attached_file',
     ];
 

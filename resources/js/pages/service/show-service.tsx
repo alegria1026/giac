@@ -7,7 +7,7 @@ interface Service {
     id: number;
     name: string;
     description: string;
-    status: string;
+    category: string;
     attached_file: string | null;
 }
 
@@ -24,7 +24,7 @@ export default function ShowService({ service }: Props) {
     const { data, setData, patch, delete: destroy } = useForm({
         name: service.name,
         description: service.description,
-        status: service.status,
+        category: service.category,
         attached_file: null,
     });
 
@@ -50,7 +50,7 @@ export default function ShowService({ service }: Props) {
         if (
             data.name.trim() === "" ||
             data.description.trim() === "" ||
-            data.status === ""
+            data.category === ""
         ) {
             setMessage(["Todos los campos son obligatorios.", false]);
             return;
@@ -98,12 +98,12 @@ export default function ShowService({ service }: Props) {
 
                     {/* Área */}
                     <div className="mt-2">
-                        <label htmlFor="status">Área</label>
+                        <label htmlFor="category">Área</label>
                         <select
-                            id="status"
+                            id="category"
                             className="w-full outline-0 px-2 py-2 border border-gray-400 rounded-sm"
-                            value={data.status}
-                            onChange={(e) => setData("status", e.target.value)}
+                            value={data.category}
+                            onChange={(e) => setData("category", e.target.value)}
                         >
                             <option value="">Selecciona una opción</option>
                             <option value="Ingeniería">Ingeniería</option>

@@ -18,7 +18,7 @@ class ServiceController extends Controller
     public function index()
     {
         if (request()->routeIs('services.engineering')) {
-            $engineering = Service::where('status', 'Ingeniería')
+            $engineering = Service::where('category', 'Ingeniería')
                 ->orderBy('created_at', 'desc')
                 ->get()
                 ->map(function ($engineering) {
@@ -32,7 +32,7 @@ class ServiceController extends Controller
         }
 
         if (request()->routeIs('services.construction')) {
-            $construction = Service::where('status', 'Construcción')
+            $construction = Service::where('category', 'Construcción')
                 ->orderBy('created_at', 'desc')
                 ->get()
                 ->map(function ($item) {
@@ -45,7 +45,7 @@ class ServiceController extends Controller
             ]);
         }
 
-        $ingenieria = Service::where('status', 'Ingeniería')
+        $ingenieria = Service::where('category', 'Ingeniería')
             ->orderBy('created_at', 'desc')
             ->paginate(10, ['*'], 'ingenieria')
             ->through(fn ($item) => [
@@ -53,7 +53,7 @@ class ServiceController extends Controller
                 'attached_file' => Storage::disk('services')->url($item->attached_file),
             ]);
 
-        $construccion = Service::where('status', 'Construcción')
+        $construccion = Service::where('category', 'Construcción')
             ->orderBy('created_at', 'desc')
             ->paginate(10, ['*'], 'construccion')
             ->through(fn ($item) => [
@@ -92,7 +92,7 @@ class ServiceController extends Controller
             'user_id' => Auth::id(),
             'name' => $validated['name'],
             'description' => $validated['description'],
-            'status' => $validated['status'],
+            'category' => $validated['category'],
             'attached_file' => $path ?? null,
         ]);
 
@@ -111,7 +111,7 @@ class ServiceController extends Controller
                 'id' => $service->id,
                 'name' => $service->name,
                 'description' => $service->description,
-                'status' => $service->status,
+                'category' => $service->category,
                 'attached_file' => $service->attached_file
                     ? Storage::disk('services')->url($service->attached_file)
                     : null,
@@ -124,6 +124,8 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
+        \Log::info('Datos validados:', $request->validated());
+
         $validated = $request->validated();
 
         if ($request->hasFile('attached_file')) {
