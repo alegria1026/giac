@@ -6,7 +6,7 @@ interface Props {
 
 export default function ServiceCard({ name, description, image }: Props) {
     return (
-        <div className="rounded-lg overflow-hidden bg-white shadow-[0px_0px_8px_rgba(103,103,103,0.2)] transition hover:scale-[1.01] hover:shadow-md">
+        <div className="rounded-lg overflow-hidden bg-white shadow-[0px_0px_8px_rgba(103,103,103,0.2)]">
             <img
                 src={`${image}`}
                 alt={name}
