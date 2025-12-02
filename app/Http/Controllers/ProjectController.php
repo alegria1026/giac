@@ -136,6 +136,10 @@ class ProjectController extends Controller
             $validated['attached_file'] = $path;
         }
 
+        if (!isset($validated['attached_file'])) {
+            $validated['attached_file'] = $project->attached_file;
+        }
+
         $project->update($validated);
 
         return to_route('projects.index')->with('status', 'Proyecto actualizado correctamente.');

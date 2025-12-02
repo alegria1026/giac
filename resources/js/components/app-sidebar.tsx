@@ -28,12 +28,12 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Portafolio',
-        href: '/portafolio',
+        href: '/projects',
         icon: Folder,
     },
     {
         title: 'Certificaciones',
-        href: '/certificaciones',
+        href: '/certifications',
         icon: BadgeCheck,
     },
 ];
