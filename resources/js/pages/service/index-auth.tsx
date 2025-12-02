@@ -15,8 +15,8 @@ interface PaginatedServices {
 }
 
 interface Props {
-    ingenieria: PaginatedServices;
-    construccion: PaginatedServices;
+    engineering: PaginatedServices;
+    construction: PaginatedServices;
 }
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -26,7 +26,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Index({ ingenieria, construccion }: Props) {
+export default function Index({ engineering, construction }: Props) {
     const { auth } = usePage<SharedData>().props;
     const name = auth.user.name;
 
@@ -66,8 +66,8 @@ export default function Index({ ingenieria, construccion }: Props) {
                     </button>
                 </div>
 
-                <ServicesTable title="Servicios de Ingeniería" services={ingenieria} />
-                <ServicesTable title="Servicios de Construcción" services={construccion} />
+                <ServicesTable title="Servicios de Ingeniería" services={engineering} />
+                <ServicesTable title="Servicios de Construcción" services={construction} />
             </div>
         </AppLayout>
     );

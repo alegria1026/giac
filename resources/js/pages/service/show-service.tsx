@@ -29,6 +29,7 @@ export default function ShowService({ service }: Props) {
     });
 
     const [preview, setPreview] = useState<string | null>(service.attached_file ?? null);
+    const [hasImage, setHasImage] = useState<boolean>(!!service.attached_file); // 👈 control interno para saber si hay imagen
     const [message, setMessage] = useState(["Actualiza los datos necesarios del servicio.", true]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,12 +37,15 @@ export default function ShowService({ service }: Props) {
         if (file) {
             setData("attached_file", file);
             setPreview(URL.createObjectURL(file));
+            setHasImage(true); // 👈 hay imagen nueva
         }
     };
 
     const removeImage = () => {
         setPreview(null);
         setData("attached_file", null);
+        setHasImage(false);
+
         const input = document.getElementById("attached_file") as HTMLInputElement;
         if (input) input.value = "";
     };
@@ -50,7 +54,8 @@ export default function ShowService({ service }: Props) {
         if (
             data.name.trim() === "" ||
             data.description.trim() === "" ||
-            data.category === ""
+            data.category === "" ||
+            !hasImage
         ) {
             setMessage(["Todos los campos son obligatorios.", false]);
             return;

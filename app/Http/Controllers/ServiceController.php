@@ -45,7 +45,7 @@ class ServiceController extends Controller
             ]);
         }
 
-        $ingenieria = Service::where('category', 'Ingeniería')
+        $engineering = Service::where('category', 'Ingeniería')
             ->orderBy('created_at', 'desc')
             ->paginate(10, ['*'], 'ingenieria')
             ->through(fn ($item) => [
@@ -53,7 +53,7 @@ class ServiceController extends Controller
                 'attached_file' => Storage::disk('services')->url($item->attached_file),
             ]);
 
-        $construccion = Service::where('category', 'Construcción')
+        $construction = Service::where('category', 'Construcción')
             ->orderBy('created_at', 'desc')
             ->paginate(10, ['*'], 'construccion')
             ->through(fn ($item) => [
@@ -62,8 +62,8 @@ class ServiceController extends Controller
             ]);
 
         return Inertia::render('service/index-auth', [
-            'ingenieria' => $ingenieria,
-            'construccion' => $construccion,
+            'engineering' => $engineering,
+            'construction' => $construction,
         ]);
     }
 
@@ -124,7 +124,6 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        \Log::info('Datos validados:', $request->validated());
 
         $validated = $request->validated();
 
@@ -138,10 +137,6 @@ class ServiceController extends Controller
             $path = $file->storeAs('', $fileName, 'services');
 
             $validated['attached_file'] = $path;
-        }
-
-        if (!isset($validated['attached_file'])) {
-            $validated['attached_file'] = $service->attached_file;
         }
 
         $service->update($validated);
