@@ -68,6 +68,14 @@ return [
             'throw' => false,
         ],
 
+        'projects' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/projects'),
+            'url' => env('APP_URL') . '/storage/projects',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*
@@ -84,6 +92,7 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('services') => storage_path('app/services'),
+        public_path('projects') => storage_path('app/public/projects'),
     ],
 
 ];

@@ -139,6 +139,10 @@ class ServiceController extends Controller
             $validated['attached_file'] = $path;
         }
 
+        if (!isset($validated['attached_file'])) {
+            $validated['attached_file'] = $service->attached_file;
+        }
+
         $service->update($validated);
 
         return to_route('services.index')->with('status', 'Servicio actualizado correctamente.');

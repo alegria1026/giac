@@ -20,10 +20,10 @@ Route::get('/us', function () {
 Route::get('/engineering', [ServiceController::class, 'index'])->name('services.engineering');
 Route::get('/construction', [ServiceController::class, 'index'])->name('services.construction');
 
-Route::get('/projects/engineering', [ProjectController::class, 'engineering'])->name('projects.engineering');
-Route::get('/projects/construction', [ProjectController::class, 'construction'])->name('projects.construction');
+Route::get('/projects/engineering', [ProjectController::class, 'index'])->name('projects.engineering');
+Route::get('/projects/construction', [ProjectController::class, 'index'])->name('projects.construction');
 
-Route::get('/certifications/public', [CertificationController::class, 'public'])->name('certifications.public');
+Route::get('/certifications/public', [CertificationController::class, 'index'])->name('certifications.public');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
