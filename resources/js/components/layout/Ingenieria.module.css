@@ -1,0 +1,57 @@
+.ingenieria {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.ingenieria h2 {
+    font-size: 75px;
+    margin-bottom: 20px;
+    color: white;
+    margin-left: 70px;
+    position: relative;
+    z-index: 1;
+}
+
+.ingenieria ul {
+    color: white;
+    font-size: 25px;
+    position: relative;
+    margin-left: 55px;
+    z-index: 1;
+}
+
+.ingenieria li {
+    margin-bottom: 10px;
+}
+
+.conoceMas {
+    margin-top: 32px;
+    margin-left: 72px;
+    padding: 12px 32px;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 390px;
+    position: relative;
+    z-index: 1;
+}
+
+.conoceMas:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.03);
+}

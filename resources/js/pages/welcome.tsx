@@ -2,12 +2,15 @@ import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 
-// importa tus nuevos componentes (convertidos desde Vue a React)
+// importar HEADER nuevo
+import Header from '@/components/layout/Header';
+
+// importar secciones de Home
 import Hero from '@/components/layout/Hero';
-//import Ingenieria from '@/components/layout/Ingenieria';
-//import Construccion from '@/components/layout/Construccion';
-//import Certifications from '@/components/layout/Certifications';
-//import Clientes from '@/components/layout/Clientes';
+import Ingenieria from '@/components/layout/Ingenieria';
+// import Construccion from '@/components/layout/Construccion';
+// import Certifications from '@/components/layout/Certifications';
+// import Clientes from '@/components/layout/Clientes';
 // import Contacto from '@/components/layout/Contacto';
 
 export default function Welcome({
@@ -27,48 +30,30 @@ export default function Welcome({
                 />
             </Head>
 
+            {/* 🔥 HEADER INTEGRADO CORRECTAMENTE */}
+            <Header />
+
             <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
 
-                {/* HEADER — NO SE TOCA */}
-                <header className="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
-                    <nav className="flex items-center justify-end gap-4">
-                        {auth.user ? (
-                            <Link
-                                href={dashboard()}
-                                className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                            >
-                                Dashboard
-                            </Link>
-                        ) : (
-                            <>
-                                <Link
-                                    href={login()}
-                                    className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                                >
-                                    Log in
-                                </Link>
-                                {canRegister && (
-                                    <Link
-                                        href={register()}
-                                        className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                    >
-                                        Register
-                                    </Link>
-                                )}
-                            </>
-                        )}
-                    </nav>
-                </header>
+                {/* ❌ BORRADO: El header viejo del template
+                    (porque ya tienes tu propio Header.tsx nuevo)
+                */}
 
                 <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
                     <main className="flex w-full max-w-[335px] flex-col lg:max-w-4xl">
 
+                        {/* 🔥 Sección HERO */}
                         <Hero />
-                        {/*  //<Ingenieria />
+                        <Ingenieria />
+
+                        {/* 🔥 Secciones futuras (activarlas cuando las conviertas) */}
+                        {/*
+
                         <Construccion />
                         <Certifications />
                         <Clientes />
-                        <Contacto />*/}
+                        <Contacto />
+                        */}
 
                     </main>
                 </div>
