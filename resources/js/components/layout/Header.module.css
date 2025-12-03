@@ -1,0 +1,46 @@
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: transparent;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;            /* ← ahora negro */
+}
+
+.nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: black;            /* ← ahora negro */
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.nav a:hover {
+    color: #5c5c5c;
+}
+
+.logoImg {
+    width: 6rem;
+}
+
+/* Botones Login/Register/Dashboard */
+.authBtn {
+    margin-left: 1.5rem;
+    padding: 6px 14px;
+    border: 1px solid rgba(0,0,0,0.4);  /* ← borde negro */
+    border-radius: 6px;
+    color: black;                       /* ← texto negro */
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.authBtn:hover {
+    background: rgba(0,0,0,0.08);       /* ← hover suave negro */
+    transform: scale(1.05);
+}
