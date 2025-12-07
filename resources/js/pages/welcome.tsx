@@ -1,17 +1,14 @@
-import { dashboard, login, register } from '@/routes';
+// import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 
-// importar HEADER nuevo
 import Header from '@/components/layout/Header';
-
-// importar secciones de Home
 import Hero from '@/components/layout/Hero';
 import Ingenieria from '@/components/layout/Ingenieria';
 import Construccion from '@/components/layout/Construccion';
 import Certifications from '@/components/layout/Certificaciones';
 import Clientes from '@/components/layout/Clientes';
-// import Contacto from '@/components/layout/Contacto';
+import Contacto from '@/components/layout/Contacto';
 
 export default function Welcome({
                                     canRegister = true,
@@ -30,7 +27,6 @@ export default function Welcome({
                 />
             </Head>
 
-            {/* 🔥 HEADER INTEGRADO CORRECTAMENTE */}
             <Header />
 
             <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
@@ -44,10 +40,11 @@ export default function Welcome({
                         <Construccion />
                         <Certifications />
                         <Clientes />
+                        <Contacto />
 
                         {/*
 
-                        <Contacto />
+
                         */}
 
                     </main>
