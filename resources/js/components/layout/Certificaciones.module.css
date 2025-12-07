@@ -1,0 +1,55 @@
+.certifications {
+    text-align: right;
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+    color: white;
+    background-color: #2D2D2D;
+    font-size: 35px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.certifications h2 {
+    text-align: center;
+}
+
+.certifications p {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.logos {
+    display: flex;
+    gap: 8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding-top: 40px;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.conoceMas {
+    margin-top: 32px;
+    padding: 12px 32px;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    background: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 390px;
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.conoceMas:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.03);
+}

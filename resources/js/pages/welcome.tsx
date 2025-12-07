@@ -9,7 +9,7 @@ import Header from '@/components/layout/Header';
 import Hero from '@/components/layout/Hero';
 import Ingenieria from '@/components/layout/Ingenieria';
 import Construccion from '@/components/layout/Construccion';
-// import Certifications from '@/components/layout/Certifications';
+import Certificaciones from '@/components/layout/Certificaciones';
 // import Clientes from '@/components/layout/Clientes';
 // import Contacto from '@/components/layout/Contacto';
 
@@ -43,12 +43,13 @@ export default function Welcome({
                         <Hero />
                         <Ingenieria />
                         <Construccion />
+                        <Certificaciones />
 
                         {/* 🔥 Secciones futuras (activarlas cuando las conviertas) */}
                         {/*
 
 
-                        <Certifications />
+
                         <Clientes />
                         <Contacto />
                         */}
