@@ -3,44 +3,56 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: transparent;
+    width: 100%;
 }
 
-.logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;            /* ← ahora negro */
+/* NAV general */
+.nav {
+    display: flex;
+    gap: 1.5rem;
 }
 
-.nav a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: black;            /* ← ahora negro */
-    font-weight: 600;
-    transition: color 0.2s ease;
+/* Ocultar menú en móvil */
+.menuButton {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-.nav a:hover {
-    color: #5c5c5c;
+.menuIcon {
+    width: 32px;
+    height: 32px;
+    color: black;
 }
 
 .logoImg {
-    width: 6rem;
+    width: 100px;        /* tamaño fijo */
+    height: auto;        /* mantiene proporción */
+    object-fit: contain; /* evita deformación */
 }
 
-/* Botones Login/Register/Dashboard */
-.authBtn {
-    margin-left: 1.5rem;
-    padding: 6px 14px;
-    border: 1px solid rgba(0,0,0,0.4);  /* ← borde negro */
-    border-radius: 6px;
-    color: black;                       /* ← texto negro */
-    font-weight: 600;
-    transition: 0.3s ease;
-}
 
-.authBtn:hover {
-    background: rgba(0,0,0,0.08);       /* ← hover suave negro */
-    transform: scale(1.05);
+/* ====== MOBILE ====== */
+@media (max-width: 900px) {
+    .nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        border-radius: 8px;
+        display: none;
+        box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+    }
+
+    .navOpen {
+        display: flex;
+    }
+
+    .menuButton {
+        display: block;
+    }
 }
