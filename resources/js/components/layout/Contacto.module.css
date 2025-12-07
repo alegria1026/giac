@@ -50,11 +50,20 @@
     padding: 5px;
 }
 
-.mapa {
+.mapaWrapper {
     margin-top: 2rem;
     border-radius: 8px;
+    overflow: hidden;
     width: 100%;
+    aspect-ratio: 16 / 9;
 }
+
+.mapa {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 
 /* FORMULARIO */
 .formulario {
