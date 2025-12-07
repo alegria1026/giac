@@ -33,7 +33,7 @@
 .heroContent {
     position: relative;
     z-index: 2;
-    max-width: 840px;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,6 +53,7 @@
     line-height: 1.6;
     font-size: clamp(26px, 1.9vw, 20px);
     text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    text-align: justify;
 }
 
 .conoceMas {
