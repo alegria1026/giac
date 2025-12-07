@@ -1,0 +1,49 @@
+.clientes {
+    text-align: right;
+    padding: 1rem 1rem;
+    margin: 2rem 0;
+    color: black;
+    background-color: #FFFFFFE6;
+    font-size: 35px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.clientes h2 {
+    text-align: center;
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.carouselTrack {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 5s linear infinite;
+}
+
+.carousel img {
+    height: 120px;
+    width: auto;
+    filter: grayscale(0%);
+    opacity: 0.9;
+    transition: 0.3s ease;
+}
+
+.carousel img:hover {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}

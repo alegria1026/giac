@@ -10,7 +10,7 @@ import Hero from '@/components/layout/Hero';
 import Ingenieria from '@/components/layout/Ingenieria';
 import Construccion from '@/components/layout/Construccion';
 import Certifications from '@/components/layout/Certificaciones';
-// import Clientes from '@/components/layout/Clientes';
+import Clientes from '@/components/layout/Clientes';
 // import Contacto from '@/components/layout/Contacto';
 
 export default function Welcome({
@@ -39,18 +39,14 @@ export default function Welcome({
                 <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
                     <main className="flex w-full max-w-[335px] flex-col lg:max-w-4xl">
 
-                        {/* 🔥 Sección HERO */}
                         <Hero />
                         <Ingenieria />
                         <Construccion />
                         <Certifications />
+                        <Clientes />
 
-                        {/* 🔥 Secciones futuras (activarlas cuando las conviertas) */}
                         {/*
 
-
-
-                        <Clientes />
                         <Contacto />
                         */}
 
