@@ -2,17 +2,28 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    width: 100%;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-/* NAV general */
+
 .nav {
     display: flex;
     gap: 1.5rem;
 }
 
-/* Ocultar menú en móvil */
+.nav a {
+    display: flex;
+    align-items: center;   /* ← centra verticalmente */
+    height: 40px;          /* ← igual que el botón */
+    padding: 0 8px;        /* ← para que no se estiren */
+}
+
+
 .menuButton {
     display: none;
     background: none;
@@ -27,13 +38,30 @@
 }
 
 .logoImg {
-    width: 100px;        /* tamaño fijo */
-    height: auto;        /* mantiene proporción */
-    object-fit: contain; /* evita deformación */
+    width: 100px;
+    height: auto;
+    object-fit: contain;
 }
 
+.loginBtn {
+    background: #1A73E8;
+    border: 1px solid #1A73E8;
+    color: white !important;
+    padding: 6px 16px;
+    border-radius: 6px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-/* ====== MOBILE ====== */
+
+}
+
+.loginBtn:hover {
+    background: #1669c1;
+    transform: scale(1.05);
+}
+
 @media (max-width: 900px) {
     .nav {
         position: absolute;
