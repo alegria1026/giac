@@ -1,57 +1,104 @@
 .ingenieria {
     position: relative;
-    overflow: hidden;
-    min-height: 500px;
 
     width: 100vw;
+    height: 60vh;
+    min-height: 500px;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    padding: 0;
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    padding-left: 70px;
+    z-index: 3;
 }
 
-.ingenieria h2 {
-    font-size: 75px;
+.ingenieria::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 40%, rgba(0,0,0,0.5), rgba(0,0,0,0.85));
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    max-width: 690px;
+    color: white;
+    z-index: 3;
+}
+
+.content h2 {
+    font-size: clamp(45px, 6vw, 70px);
     margin-bottom: 20px;
+    font-weight: 800;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.7);
     color: white;
-    margin-left: 70px;
-    position: relative;
-    z-index: 1;
+    z-index: 3;
 }
 
-.ingenieria ul {
-    color: white;
-    font-size: 25px;
-    position: relative;
-    margin-left: 55px;
-    z-index: 1;
+.content p {
+    max-width: 900px;
+    line-height: 1.6;
+    font-size: clamp(26px, 1.9vw, 20px);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    text-align: justify;
 }
 
-.ingenieria li {
-    margin-bottom: 10px;
+/* LISTA */
+.content ul {
+    font-size: clamp(26px, 2vw, 22px);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    padding-left: 20px;
+    list-style-type: disc;
+    z-index: 3;
 }
 
+/* BOTÓN */
 .conoceMas {
-    margin-top: 32px;
-    margin-left: 72px;
     padding: 12px 32px;
     font-size: 18px;
     font-weight: 500;
     color: white;
     background: transparent;
     border: 2px solid white;
-    border-radius: 8px;
+    border-radius: 999px;
     cursor: pointer;
     transition: 0.3s ease;
-    width: 390px;
-    position: relative;
-    z-index: 1;
+    width: 260px;
+    z-index: 3;
 }
 
 .conoceMas:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: scale(1.03);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .ingenieria {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .conoceMas {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .content ul {
+        text-align: left;
+        margin: 0 auto 20px auto;
+        max-width: 300px;
+    }
 }
