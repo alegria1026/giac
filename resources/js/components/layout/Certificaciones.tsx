@@ -4,7 +4,7 @@ import atc from "@/assets/atc.png";
 export default function Certifications() {
     return (
         <section className={styles.certifications}>
-            <h2>Sistema de gestión integral certificado</h2>
+            <h2>Sistema de gestión integral certificad</h2>
 
             <p>
                 Cuenta con un sistema de gestión integral certificado
