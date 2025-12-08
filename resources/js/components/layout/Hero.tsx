@@ -28,7 +28,7 @@ export default function Hero() {
                 </p>
 
                 <Link href="/nuestra-empresa" className={styles.conoceMas}>
-                    Conocer más
+                    Conocer máss
                 </Link>
             </div>
         </section>
