@@ -1,4 +1,4 @@
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import ServiceCard from "@/components/service-card";
 import Header from '@/components/layout/Header';
 
@@ -27,12 +27,18 @@ export default function IndexConstruction({ construction }: Props) {
                     necesidades de nuestros clientes.
                 </p>
                 <div className="flex justify-center gap-4 mb-12">
-                    <button className="px-5 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700">
+                    <Link href="/projects/construction"
+                          className="px-5 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700"
+                    >
                         Construcción
-                    </button>
-                    <button className="px-5 py-2 bg-gray-200 rounded-md shadow hover:bg-gray-300">
+                    </Link>
+
+                    <Link href="/projects/engineering"
+                          className="px-5 py-2 bg-gray-200 rounded-md shadow hover:bg-gray-300"
+                    >
                         Ingeniería
-                    </button>
+                    </Link>
+
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {construction.map((service) => (
