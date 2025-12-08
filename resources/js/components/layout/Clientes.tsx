@@ -16,6 +16,11 @@ export default function Clientes() {
                     <img src={ami} alt="Cliente AMI" />
                     <img src={scribe} alt="Cliente Scribe" />
                     <img src={sedena} alt="Cliente Sedena" />
+
+                    <img src={pemex} alt="Pemex" />
+                    <img src={ami} alt="AMI" />
+                    <img src={scribe} alt="Scribe" />
+                    <img src={sedena} alt="Sedena" />
                 </div>
             </div>
         </section>

@@ -3,7 +3,7 @@
     padding: 1rem 1rem;
     margin: 2rem 0;
     color: black;
-    background-color: #FFFFFFE6;
+    background-color: #FBFBFB;
     font-size: 35px;
     width: 100vw;
     margin-left: calc(50% - 50vw);
@@ -12,6 +12,9 @@
 
 .clientes h2 {
     text-align: center;
+    font-size: clamp(45px, 6vw, 70px);
+    margin-bottom: 20px;
+    font-weight: 800;
 }
 
 .carousel {
@@ -23,7 +26,7 @@
 .carouselTrack {
     display: flex;
     gap: 4rem;
-    animation: scroll 5s linear infinite;
+    animation: scroll 20s linear infinite;
 }
 
 .carousel img {
@@ -39,11 +42,13 @@
     transform: scale(1.08);
 }
 
+/* 🔥 Carrusel que recorre TODO el track duplicado */
 @keyframes scroll {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-50%); /* recorre la mitad → la otra mitad es el duplicado */
     }
 }
+
