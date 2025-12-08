@@ -17,7 +17,7 @@ interface Props {
 
 export default function ShowService({ service }: Props) {
     const breadcrumbs: BreadcrumbItem[] = [
-        { title: "Servicios", href: "/services" },
+        { title: "Servicios", href: "/project" },
         { title: `Editar servicio #${service.id}`, href: `/services/${service.id}` },
     ];
 

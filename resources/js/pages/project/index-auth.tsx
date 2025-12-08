@@ -21,8 +21,8 @@ interface Props {
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Servicios',
-        href: '/services',
+        title: 'Proyectos',
+        href: '/proyectos',
     },
 ];
 
@@ -32,12 +32,12 @@ export default function Index({ engineering, construction }: Props) {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Servicios" />
+            <Head title="Proyectos" />
 
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-6">
                 <div className="flex items-center justify-between w-full">
                     <div>
-                        <h1 className="text-3xl font-bold text-foreground m-0 leading-none">Servicios</h1>
+                        <h1 className="text-3xl font-bold text-foreground m-0 leading-none">Proyectos</h1>
                         <h3 className="text-1 font-light text-foreground m-0 leading-none mb-3">
                             Bienvenido de nuevo, {name}
                         </h3>
