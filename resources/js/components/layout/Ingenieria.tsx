@@ -8,14 +8,22 @@ export default function Ingenieria() {
             className={styles.ingenieria}
             style={{ backgroundImage: `url(${imgFondo})` }}
         >
-            <h2>Ingeniería</h2>
+            <div className={styles.content}>
+                <h2>Ingeniería</h2>
 
-            <ul>
-                <li>Ingeniería conceptual y básica.</li>
-                <li>Levantamiento físico mediante equipo laser scanner FARO 3D.</li>
-            </ul>
+                <p>Ingeniería conceptual, básica y a detalle de:</p>
 
-            <button className={styles.conoceMas}>Ver más servicios</button>
+                <ul>
+
+                     <ul>
+                         <li> Sistemas de medición de transferencia de custodia</li>
+                         <li> Tanques de almacenamiento</li>
+                         <li>Análisis estructural y de flexibilidad</li>
+                     </ul>
+                </ul>
+
+                <button className={styles.conoceMas}>Ver más servicios</button>
+            </div>
         </section>
     );
 }

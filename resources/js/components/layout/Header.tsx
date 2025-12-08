@@ -12,19 +12,16 @@ export default function Header() {
 
     return (
         <header className={styles.mainHeader}>
-            {/* LOGO */}
             <div className={styles.logo}>
                 <Link href="/">
                     <img src={logo} alt="Giac oil & gas" className={styles.logoImg} />
                 </Link>
             </div>
 
-            {/* BOTÓN HAMBURGER (solo móvil) */}
             <button className={styles.menuButton} onClick={() => setIsOpen(!isOpen)}>
                 <MenuIcon className={styles.menuIcon} />
             </button>
 
-            {/* NAV */}
             <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ""}`}>
                 <Link href="/nuestra-empresa">Nosotros</Link>
                 <Link href="">Ingeniería</Link>
@@ -40,10 +37,19 @@ export default function Header() {
                     </Link>
                 ) : (
                     <>
-                        <Link href={login()} className={styles.authBtn}>Log in</Link>
-                        <Link href={register()} className={styles.authBtn}>Register</Link>
+                        <Link
+                            href={login()}
+                            className={`${styles.authBtn} ${styles.loginBtn}`}
+                        >
+                            Log in
+                        </Link>
+
+                        {/* <Link href={register()} className={styles.authBtn}>
+                            Register
+                        </Link> */}
                     </>
                 )}
+
             </nav>
         </header>
     );

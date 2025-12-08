@@ -8,7 +8,7 @@ export default function Construccion() {
             className={styles.construccion}
             style={{ backgroundImage: `url(${bgImage})` }}
         >
-            <div className={styles.rightContent}>
+            <div className={styles.content}>
                 <h2>Construcción</h2>
 
                 <ul>
@@ -16,9 +16,9 @@ export default function Construccion() {
                     <li>Construcción, mantenimiento y fabricación de trenes de medición fiscal para medición de agua.</li>
                     <li>Construcción, mantenimiento y fabricación de tanques presurizados.</li>
                     <li>Construcción, mantenimiento y reparación de Tanques de Almacenamiento.</li>
-
-                    <button className={styles.conoceMas}>Ver más</button>
                 </ul>
+
+                <button className={styles.conoceMas}>Ver más servicios</button>
             </div>
         </section>
     );
