@@ -15,18 +15,17 @@ interface PaginatedServices {
 }
 
 interface Props {
-    engineering: PaginatedServices;
-    construction: PaginatedServices;
+    projects: PaginatedServices;
 }
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Proyectos',
-        href: '/proyectos',
+        href: '/projects',
     },
 ];
 
-export default function Index({ engineering, construction }: Props) {
+export default function Index({ projects }: Props) {
     const { auth } = usePage<SharedData>().props;
     const name = auth.user.name;
 
@@ -45,7 +44,7 @@ export default function Index({ engineering, construction }: Props) {
 
                     <button
                         className="text-sm px-3 py-2 rounded-md cursor-pointer font-semibold bg-[#00326D] transition-all hover:bg-[#002956] text-white flex items-center gap-1"
-                        onClick={() => router.visit('/services/create')}
+                        onClick={() => router.visit('/projects/create')}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -62,12 +61,11 @@ export default function Index({ engineering, construction }: Props) {
                             <path d="M5 12h14" />
                             <path d="M12 5v14" />
                         </svg>
-                        Nuevo servicio
+                        Nuevo proyecto
                     </button>
                 </div>
 
-                <ServicesTable title="Servicios de Ingeniería" services={engineering} />
-                <ServicesTable title="Servicios de Construcción" services={construction} />
+                <ServicesTable title="Lista de proyectos" services={projects} />
             </div>
         </AppLayout>
     );

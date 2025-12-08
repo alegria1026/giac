@@ -17,8 +17,8 @@ interface Props {
 
 export default function ShowService({ service }: Props) {
     const breadcrumbs: BreadcrumbItem[] = [
-        { title: "Servicios", href: "/project" },
-        { title: `Editar servicio #${service.id}`, href: `/services/${service.id}` },
+        { title: "Proyectos", href: "/projects" },
+        { title: `Editar proyecto #${service.id}`, href: `/services/${service.id}` },
     ];
 
     const { data, setData, patch, delete: destroy } = useForm({
@@ -65,7 +65,7 @@ export default function ShowService({ service }: Props) {
     };
 
     const handleDelete = () => {
-        if (confirm("¿Estás seguro de eliminar este servicio?")) {
+        if (confirm("¿Estás seguro de eliminar este proyecto?")) {
             destroy(`/services/${service.id}`);
         }
     };

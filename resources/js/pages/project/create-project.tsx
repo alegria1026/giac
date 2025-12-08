@@ -3,10 +3,10 @@ import { Head, useForm, router } from "@inertiajs/react";
 import { useState } from "react";
 import { type BreadcrumbItem } from "@/types";
 
-export default function CreateService() {
+export default function CreateProject() {
     const breadcrumbs: BreadcrumbItem[] = [
-        { title: "Servicios", href: "/services" },
-        { title: "Crear servicio", href: "/services/create" },
+        { title: "Proyectos", href: "/projects" },
+        { title: "Crear proyecto", href: "/projects/create" },
     ];
 
     const { data, setData, post } = useForm({
@@ -44,18 +44,18 @@ export default function CreateService() {
             return;
         }
 
-        post("/services", {
+        post("/projects", {
             forceFormData: true,
         });
     };
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Crear servicio" />
+            <Head title="Crear proyecto" />
 
             <div className="bg-white w-full h-full flex items-center justify-center">
                 <div className="lg:w-5/12 w-11/12 bg-white rounded-lg">
-                    <h2 className="font-bold text-center text-2xl">Crear nuevo servicio</h2>
+                    <h2 className="font-bold text-center text-2xl">Crear nuevo proyecto</h2>
 
                     {/* Nombre */}
                     <div className="mt-2">
@@ -63,7 +63,7 @@ export default function CreateService() {
                         <input
                             type="text"
                             id="name"
-                            placeholder="Ej. Servicio eléctrico"
+                            placeholder="Ej. Proyecto eléctrico"
                             className="w-full outline-0 px-2 py-2 border border-gray-400 rounded-sm"
                             value={data.name}
                             onChange={(e) => setData("name", e.target.value)}
@@ -75,7 +75,7 @@ export default function CreateService() {
                         <label htmlFor="description">Descripción</label>
                         <textarea
                             id="description"
-                            placeholder="Describe el servicio..."
+                            placeholder="Describe el proyecto..."
                             className="w-full outline-0 px-2 py-2 border border-gray-400 rounded-sm h-28"
                             value={data.description}
                             onChange={(e) => setData("description", e.target.value)}
@@ -145,7 +145,7 @@ export default function CreateService() {
                     {/* Botones */}
                     <div className="flex justify-end gap-2 mt-2">
                         <button
-                            onClick={() => router.visit("/services")}
+                            onClick={() => router.visit("/projects")}
                             className="px-3 py-2 rounded cursor-pointer border border-gray-400 bg-white"
                         >
                             Cancelar
@@ -155,7 +155,7 @@ export default function CreateService() {
                             onClick={handleSubmit}
                             className="px-3 py-2 rounded cursor-pointer bg-[#00326D] hover:bg-[#002956] text-white"
                         >
-                            Crear servicio
+                            Crear proyecto
                         </button>
                     </div>
                 </div>

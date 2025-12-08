@@ -56,7 +56,7 @@ export default function ServicesTable({ services, title }: { services: Paginated
             <div className="relative rounded-xl border border-sidebar-border/70 dark:border-sidebar-border bg-[#F7F7F7]">
                 <div className="overflow-auto">
                     {filteredServices.length === 0 ? (
-                        <div className="px-4 py-6 text-sm text-muted-foreground">No hay servicios aún.</div>
+                        <div className="px-4 py-6 text-sm text-muted-foreground">No hay articulos aún.</div>
                     ) : (
                         <table className="min-w-full text-sm text-left border-collapse">
                             <thead className="sticky top-0 bg-[#F7F7F7] z-10">
