@@ -1,4 +1,4 @@
-// import { dashboard, login, register } from '@/routes';
+//import { dashboard, login, register } from '@/routes';
 import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
 
@@ -9,6 +9,7 @@ import Construccion from '@/components/layout/Construccion';
 import Certifications from '@/components/layout/Certificaciones';
 import Clientes from '@/components/layout/Clientes';
 import Contacto from '@/components/layout/Contacto';
+import Footer from '@/components/layout/Footer';
 
 export default function Welcome({
                                     canRegister = true,
@@ -41,16 +42,10 @@ export default function Welcome({
                         <Certifications />
                         <Clientes />
                         <Contacto />
-
-                        {/*
-
-
-                        */}
+                        <Footer />
 
                     </main>
                 </div>
-
-                <div className="hidden h-14.5 lg:block"></div>
             </div>
         </>
     );

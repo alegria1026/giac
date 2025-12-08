@@ -18,6 +18,11 @@ export default function IndexEngineering({ engineering }: Props) {
             <Head title="Ingeniería" />
             <div className="max-w-7xl mx-auto px-4 py-10">
                 <h1 className="text-3xl font-bold text-center mb-10">Servicios de Ingeniería</h1>
+                <p className="text-center text-gray-600 max-w-3xl mx-auto mb-10">
+                    Desarrollamos proyectos industriales y de energía con los más altos estándares de calidad,
+                    seguridad y eficiencia, asegurando el cumplimiento normativo y la confiabilidad operativa de
+                    cada instalación.
+                </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {engineering.map((service) => ( // ✅ Quitar .data

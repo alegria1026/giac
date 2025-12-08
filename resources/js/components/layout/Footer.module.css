@@ -1,0 +1,23 @@
+.footer {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);  /* Fuerza ancho completo */
+    margin-right: calc(50% - 50vw);
+
+    background: #000;
+    color: white;
+    text-align: center;
+
+    padding: 2rem 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.register {
+    font-size: 14px;
+    vertical-align: super;
+}

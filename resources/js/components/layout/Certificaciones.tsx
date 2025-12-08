@@ -2,9 +2,11 @@ import styles from "./Certificaciones.module.css";
 import SELLO_9001 from "@/assets/SELLO_9001.png";
 import SELLO_14001 from "@/assets/SELLO_14001.png";
 import SELLO_45001 from "@/assets/SELLO_45001.png";
+import { Link } from '@inertiajs/react';
+import React from 'react';
 export default function Certifications() {
     return (
-        <section className={styles.certifications}>
+        <section id="certificaciones" className={styles.certifications}>
             <h2>Sistema de gestión integral certificado</h2>
 
             <p>
@@ -18,7 +20,9 @@ export default function Certifications() {
                 <img src={SELLO_45001} height="185" width="170" alt="ISO 3" />
             </div>
 
-            <button className={styles.conoceMas}>Ver más certificaciones</button>
+            <Link href="/certifications/public" className={styles.conoceMas}>
+                Ver más certificaciones
+            </Link>
         </section>
     );
 }

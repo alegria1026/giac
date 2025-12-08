@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Construccion.module.css";
 import bgImage from "@/assets/construccion.png";
+import { Link } from '@inertiajs/react';
 
 export default function Construccion() {
     return (
-        <section
-            className={styles.construccion}
+        <section id="construccion" className={styles.construccion}
             style={{ backgroundImage: `url(${bgImage})` }}
         >
             <div className={styles.content}>
@@ -18,7 +18,9 @@ export default function Construccion() {
                     <li>Construcción, mantenimiento y reparación de Tanques de Almacenamiento.</li>
                 </ul>
 
-                <button className={styles.conoceMas}>Ver más servicios</button>
+                <Link href="/projects/construction" className={styles.conoceMas}>
+                    Ver más servicios
+                </Link>
             </div>
         </section>
     );

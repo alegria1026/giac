@@ -5,7 +5,7 @@ import videoHeader from '@/assets/header.mp4';
 
 export default function Hero() {
     return (
-        <section className={styles.hero}>
+        <section id="hero" className={styles.hero}>   {/* 👈 AQUÍ */}
             <video
                 autoPlay
                 muted
@@ -28,7 +28,7 @@ export default function Hero() {
                 </p>
 
                 <Link href="/nuestra-empresa" className={styles.conoceMas}>
-                    Conocer más
+                    Conocer máss
                 </Link>
             </div>
         </section>

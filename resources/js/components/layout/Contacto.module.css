@@ -2,7 +2,7 @@
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    background-color: #ffffff;
+    background-color: #00326d;
     padding: 4rem 1rem;
 }
 
@@ -12,15 +12,18 @@
 }
 
 .contactoHeader h2 {
-    font-size: 48px;
-    margin: 0;
+    color: white;
+    text-align: center;
+    font-size: clamp(45px, 6vw, 70px);
+    margin-bottom: 20px;
+    font-weight: 800;
 }
 
 .contactoHeader p {
-    font-size: 22px;
     font-weight: 300;
     margin: 0;
-    color: black;
+    font-size: clamp(26px, 2vw, 22px);
+    color: white;
 }
 
 .contactoGrid {
@@ -29,6 +32,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    color: white;
 }
 
 /* INFO ITEMS */
@@ -37,17 +41,25 @@
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.5rem;
+    color: white;
 }
 
 .icon {
-    font-size: 28px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
+
 
 .infoItem h4,
 .infoItem p {
-    color: #000 !important;
+
     margin: 0;
     padding: 5px;
+    color: white;
 }
 
 .mapaWrapper {

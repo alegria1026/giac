@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './Ingenieria.module.css';
 import imgFondo from '@/assets/ing.png';
+import { Link } from '@inertiajs/react';
+
 
 export default function Ingenieria() {
     return (
-        <section
+
+        <section id="ingenieria"
             className={styles.ingenieria}
             style={{ backgroundImage: `url(${imgFondo})` }}
         >
@@ -22,7 +25,11 @@ export default function Ingenieria() {
                      </ul>
                 </ul>
 
-                <button className={styles.conoceMas}>Ver más servicios</button>
+                <Link href="/projects/engineering" className={styles.conoceMas}>
+                    Ver más servicios
+                </Link>
+
+
             </div>
         </section>
     );
