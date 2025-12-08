@@ -3,8 +3,8 @@
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
 
-    background-color: #2d2d2d;
-    color: white;
+    background-color: #EFEFEF;
+    color:black;
 
     text-align: center;
     padding: 60px 20px 80px;
@@ -12,17 +12,20 @@
 
 /* TÍTULO */
 .certifications h2 {
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-size: clamp(45px, 6vw, 70px);
+    margin-bottom: 20px;
+    font-weight: 800;
+
 }
 
 /* SUBTÍTULO */
 .certifications p {
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: clamp(26px, 2vw, 22px);
     font-weight: 300;
     margin-bottom: 50px;
-    color: #e6e6e6;
+    color:black;
+
+
 }
 
 /* GRID DE LOGOS */
@@ -36,7 +39,7 @@
 
 /* tamaño uniforme de logos */
 .logos img {
-    width: 170px;
+    width: 190px;
     height: auto;
     opacity: 0.95;
     transition: 0.3s ease;
