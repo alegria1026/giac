@@ -4,7 +4,8 @@ import imgFondo from '@/assets/ing.png';
 
 export default function Ingenieria() {
     return (
-        <section
+
+        <section id="ingenieria"
             className={styles.ingenieria}
             style={{ backgroundImage: `url(${imgFondo})` }}
         >

@@ -4,8 +4,7 @@ import bgImage from "@/assets/construccion.png";
 
 export default function Construccion() {
     return (
-        <section
-            className={styles.construccion}
+        <section id="construccion" className={styles.construccion}
             style={{ backgroundImage: `url(${bgImage})` }}
         >
             <div className={styles.content}>

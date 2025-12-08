@@ -3,7 +3,7 @@ import styles from "./Contacto.module.css";
 
 export default function Contacto() {
     return (
-        <section className={styles.contacto}>
+        <section id="contacto" className={styles.contacto}>
             <div className={styles.contactoHeader}>
                 <h2>Háblanos de tu proyecto</h2>
                 <p>Estamos listos para ayudarte con tu próximo desafío</p>

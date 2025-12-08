@@ -5,7 +5,7 @@ import videoHeader from '@/assets/header.mp4';
 
 export default function Hero() {
     return (
-        <section className={styles.hero}>
+        <section id="hero" className={styles.hero}>   {/* 👈 AQUÍ */}
             <video
                 autoPlay
                 muted

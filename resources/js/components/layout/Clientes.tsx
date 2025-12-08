@@ -7,7 +7,7 @@ import sedena from "@/assets/clientes/sedena.png";
 
 export default function Clientes() {
     return (
-        <section className={styles.clientes}>
+        <section id="clientes" className={styles.clientes}>
             <h2>Clientes</h2>
 
             <div className={styles.carousel}>

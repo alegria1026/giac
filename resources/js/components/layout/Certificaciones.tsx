@@ -4,7 +4,7 @@ import SELLO_14001 from "@/assets/SELLO_14001.png";
 import SELLO_45001 from "@/assets/SELLO_45001.png";
 export default function Certifications() {
     return (
-        <section className={styles.certifications}>
+        <section id="certificaciones" className={styles.certifications}>
             <h2>Sistema de gestión integral certificado</h2>
 
             <p>

@@ -10,6 +10,14 @@ export default function Header() {
     const { auth } = usePage<SharedData>().props;
     const [isOpen, setIsOpen] = useState(false);
 
+    const scrollToSection = (id: string) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+
     return (
         <header className={styles.mainHeader}>
             <div className={styles.logo}>
@@ -23,13 +31,30 @@ export default function Header() {
             </button>
 
             <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ""}`}>
-                <Link href="/nuestra-empresa">Nosotros</Link>
-                <Link href="">Ingeniería</Link>
-                <Link href="">Construcción</Link>
-                <Link href="">Proyectos</Link>
-                <Link href="">Certificaciones</Link>
-                <Link href="/oficinas">Oficinas</Link>
-                <Link href="/contacto">Contacto</Link>
+                <button onClick={() => scrollToSection("hero")} className={styles.navLink}>
+                    Nosotros
+                </button>
+
+                <button onClick={() => scrollToSection("ingenieria")} className={styles.navLink}>
+                    Ingeniería
+                </button>
+
+                <button onClick={() => scrollToSection("construccion")} className={styles.navLink}>
+                    Construcción
+                </button>
+
+                <button onClick={() => scrollToSection("certificaciones")} className={styles.navLink}>
+                    Certificaciones
+                </button>
+
+                <button onClick={() => scrollToSection("clientes")} className={styles.navLink}>
+                    Clientes
+                </button>
+
+                <button onClick={() => scrollToSection("contacto")} className={styles.navLink}>
+                    Contacto
+                </button>
+
 
                 {auth.user ? (
                     <Link href={dashboard()} className={styles.authBtn}>
