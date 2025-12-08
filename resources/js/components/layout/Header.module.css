@@ -1,25 +1,26 @@
 body {
-    padding-top: 45px; /* altura del header */
+    padding-top: 25px;
 }
 
 .mainHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 40px;
-    padding-left: 20px;
-    padding-right: 30px;
-    height: 30px;
-    font-size: 20px;
-    font-weight: bold;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
-    background: white;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 75px;          /* altura real */
+    padding: 0 20px;       /* padding lateral */
+
+    background: white;
+    z-index: 1000;
+    font-size: 20px;
+    font-weight: bold;
 }
+
 
 
 .nav {
@@ -29,9 +30,9 @@ body {
 
 .nav a {
     display: flex;
-    align-items: center;   /* ← centra verticalmente */
-    height: 40px;          /* ← igual que el botón */
-    padding: 0 8px;        /* ← para que no se estiren */
+    align-items: center;
+    height: 40px;
+    padding: 0 8px;
 }
 
 
