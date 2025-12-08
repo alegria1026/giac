@@ -1,9 +1,9 @@
 import styles from "./Clientes.module.css";
 
-import pemex from "@/assets/clientes/pemex.png";
-import ami from "@/assets/clientes/ami.png";
-import scribe from "@/assets/clientes/scribe.png";
-import sedena from "@/assets/clientes/sedena.png";
+import pemex from "@/assets/Clientes/pemex.png";
+import ami from "@/assets/Clientes/ami.png";
+import scribe from "@/assets/Clientes/scribe.png";
+import sedena from "@/assets/Clientes/sedena.png";
 
 export default function Clientes() {
     return (
