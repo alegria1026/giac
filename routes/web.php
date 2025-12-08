@@ -46,9 +46,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/certifications', [CertificationController::class, 'index'])->name('certifications.index');
     Route::get('/certifications/create', [CertificationController::class, 'create'])->name('certifications.create');
-    Route::post('/certifications', [CertificationController::class, 'store'])->name('certifications.store');
+    Route::post('/certifications', [CertificationController::class, 'store'])->name('certifications.store');//aqui mandaremos la creacion de certifications
     Route::get('/certifications/{certification}', [CertificationController::class, 'show'])->name('certifications.show');
-    Route::patch('/certifications/{certification}', [CertificationController::class, 'update'])->name('certifications.update');
+    Route::patch('/certifications/{certification}', [CertificationController::class, 'update'])->name('certifications.update');//ruta para actulizar
     Route::delete('/certifications/{certification}', [CertificationController::class, 'destroy'])->name('certifications.destroy');
 });
 
