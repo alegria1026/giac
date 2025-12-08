@@ -1,7 +1,6 @@
-import AppLayout from "@/layouts/app-layout";
 import { Head } from "@inertiajs/react";
 import CertificationCard  from '@/components/ui/card-certification';
-import { type BreadcrumbItem } from "@/types";
+import Header from "@/components/layout/Header";
 
 interface Certification {
     id: number;
@@ -14,37 +13,65 @@ interface Props {
 }
 
 export default function CertificationsIndex({ certifications }: Props) {
-    const breadcrumbs: BreadcrumbItem[] = [
-        { title: "Certificaciones", href: "/certifications/public" },
-    ];
-
     return (
-        <AppLayout breadcrumbs={breadcrumbs}>
+        <>
             <Head title="Certificaciones" />
+            <Header />
 
-            <div className="w-full flex flex-col items-center text-center py-12 px-6">
+            <div className="max-w-7xl mx-auto px-4 py-12">
 
-                {/* Título */}
-                <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+                {/* TÍTULO */}
+                <h1 className="text-4xl font-extrabold text-center mb-4">
                     Certificaciones
                 </h1>
 
-                <p className="text-gray-600 max-w-3xl mb-12">
-                    Somos una empresa especializada en soluciones tecnológicas, respaldada por el uso de software de vanguardia
-                    y certificaciones ISO que garantizan la calidad, seguridad y eficiencia de nuestros procesos.
+                {/* DESCRIPCIÓN */}
+                <p className="text-center text-gray-600 max-w-3xl mx-auto mb-10">
+                    Somos una empresa especializada en soluciones tecnológicas, respaldada por
+                    certificaciones ISO que garantizan la calidad, seguridad y eficiencia de
+                    nuestros procesos.
                 </p>
 
-                {/* Grid de certificaciones */}
+                {/* GRID DE CERTIFICACIONES */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {certifications.map((cert) => (
+
+                    {/* ✔ CERTIFICACIONES MANUALES */}
+                    <div className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition">
                         <CertificationCard
-                            key={cert.id}
-                            name={cert.name}
-                            image={cert.attached_file}
+                            name="ISO 9001:2015"
+                            image="/storage/certifications/iso9001.png"
                         />
+                    </div>
+
+                    <div className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition">
+                        <CertificationCard
+                            name="ISO 14001:2015"
+                            image="/storage/certifications/iso14001.png"
+                        />
+                    </div>
+
+                    <div className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition">
+                        <CertificationCard
+                            name="ISO 45001:2018"
+                            image="/storage/certifications/iso45001.png"
+                        />
+                    </div>
+
+                    {/* ✔ CERTIFICACIONES DEL BACKEND */}
+                    {certifications.map((cert) => (
+                        <div
+                            key={cert.id}
+                            className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition"
+                        >
+                            <CertificationCard
+                                name={cert.name}
+                                image={cert.attached_file}
+                            />
+                        </div>
                     ))}
                 </div>
+
             </div>
-        </AppLayout>
+        </>
     );
 }
