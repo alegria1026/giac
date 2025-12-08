@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { router } from "@inertiajs/react";
 
-type Service = {
+type Certification = {
     id: number | string;
     name: string;
-    image_url: string;
+    attached_file: string; // ahora usamos este campo directamente
+    created_at: string;
 };
 
 type PaginatedCertifications = {
-    data: Service[];
+    data: Certification[];
     links: Array<{ url: string | null; label: string; active: boolean }>;
 };
 
@@ -30,6 +31,7 @@ export default function CertificationsTable({
 
     return (
         <div className="space-y-4">
+            {/* Título + buscador */}
             <div className="flex justify-between items-center mt-6 w-full">
                 <h2 className="text-2xl font-bold text-foreground leading-none">{title}</h2>
 
@@ -59,6 +61,7 @@ export default function CertificationsTable({
                 </div>
             </div>
 
+            {/* Tabla */}
             <div className="relative rounded-xl border border-sidebar-border/70 bg-[#F7F7F7]">
                 <div className="overflow-auto">
                     {filteredCertifications.length === 0 ? (
@@ -70,7 +73,8 @@ export default function CertificationsTable({
                             <thead className="sticky top-0 bg-[#F7F7F7] z-10">
                             <tr className="border-b border-sidebar-border/70">
                                 <th className="px-4 py-3 font-semibold">Nombre</th>
-                                <th className="px-4 py-3 font-semibold">Imagen</th>
+                                <th className="px-4 py-3 font-semibold">Archivo</th>
+                                <th className="px-4 py-3 font-semibold">Fecha de creación</th>
                             </tr>
                             </thead>
 
@@ -83,12 +87,14 @@ export default function CertificationsTable({
                                 >
                                     <td className="px-4 py-3 truncate max-w-xs">{c.name}</td>
 
+                                    {/* Mostramos directamente el nombre del archivo */}
+                                    <td className="px-4 py-3 truncate max-w-xs">
+                                        {c.attached_file || "Sin archivo"}
+                                    </td>
+
+                                    {/* Fecha formateada */}
                                     <td className="px-4 py-3">
-                                        <img
-                                            src={c.image_url}
-                                            alt={c.name}
-                                            className="h-12 w-12 object-cover rounded-md border"
-                                        />
+                                        {new Date(c.created_at).toLocaleDateString()}
                                     </td>
                                 </tr>
                             ))}
@@ -98,11 +104,12 @@ export default function CertificationsTable({
                 </div>
             </div>
 
+            {/* Paginación */}
             <div className="flex justify-end items-end gap-1 px-4 text-sm">
                 {certifications.links.map((link, index) => {
                     const isDisabled = link.url === null;
                     const isActive = link.active;
-                    const label = link.label.replace(/&laquo;|&raquo;/g, '').trim();
+                    const label = link.label.replace(/&laquo;|&raquo;/g, "").trim();
 
                     return (
                         <button
@@ -124,11 +131,7 @@ export default function CertificationsTable({
                                         : "bg-white text-gray-700 hover:bg-[#F1F5F9]"
                             }`}
                         >
-                            {label === "Previous"
-                                ? "‹"
-                                : label === "Next"
-                                    ? "›"
-                                    : label}
+                            {label === "Previous" ? "‹" : label === "Next" ? "›" : label}
                         </button>
                     );
                 })}
