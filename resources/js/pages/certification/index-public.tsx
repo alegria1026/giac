@@ -1,6 +1,6 @@
 import AppLayout from "@/layouts/app-layout";
 import { Head } from "@inertiajs/react";
-import CertificationCard  from '@/components/card-certification';
+import CertificationCard  from '@/components/ui/card-certification';
 import { type BreadcrumbItem } from "@/types";
 
 interface Certification {
