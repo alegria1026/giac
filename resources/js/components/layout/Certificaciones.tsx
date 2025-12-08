@@ -1,6 +1,7 @@
 import styles from "./Certificaciones.module.css";
-import atc from "@/assets/atc.png";
-
+import SELLO_9001 from "@/assets/SELLO_9001.png";
+import SELLO_14001 from "@/assets/SELLO_14001.png";
+import SELLO_45001 from "@/assets/SELLO_45001.png";
 export default function Certifications() {
     return (
         <section className={styles.certifications}>
@@ -12,9 +13,9 @@ export default function Certifications() {
             </p>
 
             <div className={styles.logos}>
-                <img src={atc} height="185" width="170" alt="ISO 1" />
-                <img src={atc} height="185" width="170" alt="ISO 2" />
-                <img src={atc} height="185" width="170" alt="ISO 3" />
+                <img src={SELLO_9001} height="195" width="180" alt="ISO 1" />
+                <img src={SELLO_14001} height="185" width="170" alt="ISO 2" />
+                <img src={SELLO_45001} height="185" width="170" alt="ISO 3" />
             </div>
 
             <button className={styles.conoceMas}>Ver más certificaciones</button>

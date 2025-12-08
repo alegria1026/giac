@@ -42,13 +42,15 @@
 }
 
 .content ul {
-    font-size: clamp(18px, 2vw, 22px);
+
     line-height: 1.6;
     margin-bottom: 30px;
     padding-left: 20px;
     list-style-type: disc;
     color: white;
     text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+
+    font-size: clamp(26px, 2vw, 22px);
 }
 
 .conoceMas {
