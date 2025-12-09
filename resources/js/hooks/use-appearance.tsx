@@ -19,12 +19,9 @@ const setCookie = (name: string, value: string, days = 365) => {
     document.cookie = `${name}=${value};path=/;max-age=${maxAge};SameSite=Lax`;
 };
 
-const applyTheme = (appearance: Appearance) => {
-    const isDark =
-        appearance === 'dark' || (appearance === 'system' && prefersDark());
-
-    document.documentElement.classList.toggle('dark', isDark);
-    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+const applyTheme = () => {
+    document.documentElement.classList.remove('dark');
+    document.documentElement.style.colorScheme = 'light';
 };
 
 const mediaQuery = () => {
@@ -44,7 +41,7 @@ export function initializeTheme() {
     const savedAppearance =
         (localStorage.getItem('appearance') as Appearance) || 'system';
 
-    applyTheme(savedAppearance);
+    applyTheme();
 
     // Add the event listener for system theme changes...
     mediaQuery()?.addEventListener('change', handleSystemThemeChange);
@@ -62,7 +59,7 @@ export function useAppearance() {
         // Store in cookie for SSR...
         setCookie('appearance', mode);
 
-        applyTheme(mode);
+        applyTheme();
     }, []);
 
     useEffect(() => {
@@ -71,7 +68,7 @@ export function useAppearance() {
         ) as Appearance | null;
 
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        updateAppearance(savedAppearance || 'system');
+        updateAppearance('light');
 
         return () =>
             mediaQuery()?.removeEventListener(
