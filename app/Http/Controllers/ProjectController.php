@@ -17,15 +17,53 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('created_at', 'desc')
-            ->paginate(10)
+        if (request()->routeIs('projects.engineering')) {
+            $engineering = Project::where('category', 'Ingeniería')
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->map(function ($item) {
+                    $item->attached_file = Storage::disk('projects')->url($item->attached_file);
+                    return $item;
+                });
+
+            return Inertia::render('project/index-engineering', [
+                'engineering' => $engineering,
+            ]);
+        }
+
+        if (request()->routeIs('projects.construction')) {
+            $construction = Project::where('category', 'Construcción')
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->map(function ($item) {
+                    $item->attached_file = Storage::disk('projects')->url($item->attached_file);
+                    return $item;
+                });
+
+            return Inertia::render('project/index-construction', [
+                'construction' => $construction,
+            ]);
+        }
+
+        $engineering = Project::where('category', 'Ingeniería')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10, ['*'], 'ingenieria')
             ->through(fn ($item) => [
                 ...$item->toArray(),
-                'attached_file' => $item->attached_file ? Storage::disk('projects')->url($item->attached_file) : null,
+                'attached_file' => Storage::disk('projects')->url($item->attached_file),
+            ]);
+
+        $construction = Project::where('category', 'Construcción')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10, ['*'], 'construccion')
+            ->through(fn ($item) => [
+                ...$item->toArray(),
+                'attached_file' => Storage::disk('projects')->url($item->attached_file),
             ]);
 
         return Inertia::render('project/index-auth', [
-            'projects' => $projects,
+            'engineering' => $engineering,
+            'construction' => $construction,
         ]);
     }
 
