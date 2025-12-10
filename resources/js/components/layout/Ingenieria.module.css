@@ -60,8 +60,11 @@
 .ingenieriaContent ul {
     margin-left: 20px;
     margin-bottom: 32px;
-    font-size: clamp(20px, 2vw, 22px);
+    font-size: clamp(26px, 2vw, 22px);
     text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    list-style-type: disc;
+
+
 }
 
 .conoceMas {
