@@ -5,7 +5,7 @@ import videoHeader from '@/assets/header.mp4';
 
 export default function Hero() {
     return (
-        <section id="hero" className={styles.hero}>   {/* 👈 AQUÍ */}
+        <section id="hero" className={styles.hero}>
             <video
                 autoPlay
                 muted
@@ -27,8 +27,8 @@ export default function Hero() {
                     la medición, regulación, análisis y control de fludos.
                 </p>
 
-                <Link href="/nuestra-empresa" className={styles.conoceMas}>
-                    Conocer máss
+                <Link href="/projects/engineering" className={styles.conoceMas}>
+                    Conocer más
                 </Link>
             </div>
         </section>

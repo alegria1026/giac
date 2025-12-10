@@ -1,6 +1,7 @@
 import { Head } from "@inertiajs/react";
 import CertificationCard  from '@/components/ui/card-certification';
 import Header from "@/components/layout/Header";
+import HeaderSections from '@/components/layout/HeaderSections';
 
 interface Certification {
     id: number;
@@ -16,7 +17,7 @@ export default function CertificationsIndex({ certifications }: Props) {
     return (
         <>
             <Head title="Certificaciones" />
-            <Header />
+            <HeaderSections />
 
             <div className="max-w-7xl mx-auto px-4 py-12">
 

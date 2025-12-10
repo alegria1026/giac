@@ -1,6 +1,7 @@
 import { Head, Link, usePage } from "@inertiajs/react";
 import ServiceCard from "@/components/service-card";
 import Header from '@/components/layout/Header';
+import HeaderSections from '@/components/layout/HeaderSections';
 
 interface Project {
     id: number;
@@ -24,7 +25,7 @@ export default function IndexConstruction({ construction }: Props) {
     return (
         <>
             <Head title="Portafolio - Construcción" />
-            <Header />
+            <HeaderSections />
 
             <div className="max-w-7xl mx-auto px-4 py-12">
                 <h1 className="text-4xl font-bold text-center mb-4">Portafolio</h1>
