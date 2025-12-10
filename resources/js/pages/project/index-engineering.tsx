@@ -1,19 +1,26 @@
-import { Head } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import ServiceCard from "@/components/service-card";
-import Header from '@/components/layout/Header';
+import Header from "@/components/layout/Header";
 
-interface Service {
-    id: number | string;
+interface Project {
+    id: number;
+    user_id: number;
     name: string;
     description: string;
+    category: "Ingeniería" | "Construcción";
     attached_file: string;
 }
 
 interface Props {
-    engineering: Service[];
+    engineering: Project[];
 }
 
 export default function IndexEngineering({ engineering }: Props) {
+    const { url } = usePage(); // Detecta la ruta actual
+
+    const isConstruction = url.startsWith("/projects/construction");
+    const isEngineering = url.startsWith("/projects/engineering");
+
     return (
         <>
             <Head title="Portafolio - Ingeniería" />
@@ -34,25 +41,38 @@ export default function IndexEngineering({ engineering }: Props) {
 
                 {/* BOTONES DE FILTRO */}
                 <div className="flex justify-center gap-4 mb-12">
-                    <button className="px-5 py-2 bg-gray-200 rounded-md shadow hover:bg-gray-300">
+
+                    {/* Botón Construcción */}
+                    <Link
+                        href="/projects/construction"
+                        className={`px-5 py-2 rounded-md shadow transition
+                        ${isConstruction ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-gray-300"}`}
+                    >
                         Construcción
-                    </button>
-                    <button className="px-5 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700">
+                    </Link>
+
+                    {/* Botón Ingeniería */}
+                    <Link
+                        href="/projects/engineering"
+                        className={`px-5 py-2 rounded-md shadow transition
+                        ${isEngineering ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-gray-300"}`}
+                    >
                         Ingeniería
-                    </button>
+                    </Link>
                 </div>
 
                 {/* GRID DE TARJETAS */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {engineering.map((service) => (
+                    {engineering.map((project) => (
                         <div
-                            key={service.id}
+                            key={project.id}
                             className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition"
                         >
                             <ServiceCard
-                                name={service.name}
-                                description={service.description}
-                                image={service.attached_file}
+                                key={project.id}
+                                name={project.name}
+                                description={project.description}
+                                image={project.attached_file}
                             />
                         </div>
                     ))}
