@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export type Appearance = 'light';
 
@@ -21,23 +21,16 @@ export function initializeTheme() {
 }
 
 export function useAppearance() {
-    const [appearance, setAppearance] = useState<Appearance>('light');
+    const [appearance] = useState<Appearance>('light');
 
     const updateAppearance = useCallback((mode: Appearance) => {
-        setAppearance(mode);
 
-        // Store in localStorage for client-side persistence...
         localStorage.setItem('appearance', mode);
 
-        // Store in cookie for SSR...
         setCookie('appearance', mode);
 
         applyTheme();
     }, []);
-
-    useEffect(() => {
-        updateAppearance('light');
-    }, [updateAppearance]);
 
     return { appearance, updateAppearance } as const;
 }
