@@ -1,4 +1,4 @@
-import styles from "./Us.module.css";
+import styles from "./us.module.css";
 import mision from "@/assets/iconos/mision.svg";
 import vision from "@/assets/iconos/vision.svg";
 import valores from "@/assets/iconos/valores.svg";
