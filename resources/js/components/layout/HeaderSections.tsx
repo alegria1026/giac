@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import { Link, usePage } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 import styles from "./HeaderSections.module.css";
 import logo from "@/assets/logogiac.svg";
-import { dashboard, login, register } from "@/routes";
-import { type SharedData } from "@/types";
 import MenuIcon from "@/components/icons/MenuIcon";
 
 export default function HeaderSections() {
-    const { auth } = usePage<SharedData>().props;
     const [isOpen, setIsOpen] = useState(false);
-
-    const scrollToSection = (id: string) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
 
     return (
         <header className={styles.mainHeader}>
@@ -62,17 +51,6 @@ export default function HeaderSections() {
                     Contacto
                 </Link>
 
-                {/* AUTH
-                {auth.user ? (
-                    <Link href={dashboard()} className={styles.authBtn}>
-                        Dashboard
-                    </Link>
-                ) : (
-                    <Link href={login()} className={`${styles.authBtn} ${styles.loginBtn}`}>
-                        Log in
-                    </Link>
-                )}
-                 */}
             </nav>
         </header>
     );
