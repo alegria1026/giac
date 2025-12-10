@@ -1,0 +1,98 @@
+body {
+    padding-top: 25px;
+}
+
+.mainHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 75px;          /* altura real */
+    padding: 0 20px;       /* padding lateral */
+
+    background: white;
+    z-index: 1000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+.nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav a {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 8px;
+}
+
+
+.menuButton {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menuIcon {
+    width: 32px;
+    height: 32px;
+    color: black;
+}
+
+.logoImg {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+.loginBtn {
+    background: #1A73E8;
+    border: 1px solid #1A73E8;
+    color: white !important;
+    padding: 6px 16px;
+    border-radius: 6px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.loginBtn:hover {
+    background: #1669c1;
+    transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        border-radius: 8px;
+        display: none;
+        box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+    }
+
+    .navOpen {
+        display: flex;
+    }
+
+    .menuButton {
+        display: block;
+    }
+}
