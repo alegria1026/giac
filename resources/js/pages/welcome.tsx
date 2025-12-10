@@ -1,6 +1,4 @@
-//import { dashboard, login, register } from '@/routes';
-import { type SharedData } from '@/types';
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head} from '@inertiajs/react';
 
 import Header from '@/components/layout/Header';
 import Hero from '@/components/layout/Hero';
@@ -11,13 +9,7 @@ import Clientes from '@/components/layout/Clientes';
 import Contacto from '@/components/layout/Contacto';
 import Footer from '@/components/layout/Footer';
 
-export default function Welcome({
-                                    canRegister = true,
-                                }: {
-    canRegister?: boolean;
-}) {
-    const { auth } = usePage<SharedData>().props;
-
+export default function Welcome() {
     return (
         <>
             <Head title="GIAC">
