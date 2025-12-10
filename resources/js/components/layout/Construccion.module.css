@@ -1,16 +1,16 @@
 .construccionHero {
     width: 100vw;
-    height: 70vh;
-    max-height: 900px;
-    min-height: 500px;
+    height: 80vh;
+    max-height: 1000px;
+    min-height: 550px;
     color: white;
     overflow: hidden;
     margin-left: calc(50% - 50vw);
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* 🔥 contenido a la derecha */
-    padding: 0 60px;
+    justify-content: flex-end;
+    padding: 0 4rem;
 }
 
 /* Degradado sobre el video */
@@ -37,57 +37,63 @@
 .construccionContent {
     position: relative;
     z-index: 2;
-    max-width: 650px;
-    text-align: right; /* contenido alineado derecha */
+    max-width: 700px;
+    text-align: right;
 }
 
 .construccionContent h2 {
-    margin: 0 0 24px 0;
-    font-size: clamp(50px, 6vw, 72px);
+    margin: 0 0 1.5rem 0;
+    font-size: clamp(42px, 6vw, 70px);
     font-weight: 800;
     text-shadow: 0 3px 8px rgba(0,0,0,0.7);
+    text-align: left;
 }
 
 .construccionContent ul {
-    font-size: clamp(20px, 2vw, 22px);
+    font-size: clamp(18px, 2vw, 20px);
     line-height: 1.6;
     text-shadow: 0 2px 4px rgba(0,0,0,0.7);
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
     list-style-type: disc;
+    padding-left: 1.5rem;
+
+    text-align: left; /* ✅ Texto alineado a la izquierda */
+    list-style-position: inside; /* ✅ Bullet adentro del área de texto */
 }
 
 .construccionContent li {
     margin-bottom: 10px;
-    font-size: clamp(26px, 2vw, 22px);
+    font-size: inherit;
+    text-align: left; /* ✅ Refuerzo para cada ítem */
 }
 
 .conoceMas {
-    margin-top: 12px;
-    padding: 12px 32px;
+    padding: 14px 32px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     color: white;
     background: transparent;
     border: 2px solid white;
     border-radius: 999px;
     cursor: pointer;
-    transition: 0.3s ease;
-    width: 220px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: fit-content;
     text-align: center;
-    margin-left: auto; /* mantener alineado derecha */
     display: block;
 }
 
 .conoceMas:hover {
     background: rgba(255,255,255,0.15);
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
-/* RESPONSIVE */
+/* Tablets */
 @media (max-width: 900px) {
     .construccionHero {
-        padding: 0 20px;
+        padding: 0 1.5rem;
         justify-content: center;
+        height: auto;
+        min-height: 500px;
     }
 
     .construccionContent {
@@ -95,16 +101,23 @@
         max-width: 100%;
     }
 
+    .construccionContent ul {
+        text-align: left;
+        margin: 0 auto;
+        padding-left: 1.5rem;
+    }
+
     .conoceMas {
         margin: 0 auto;
-        width: 180px;
     }
 }
 
+/* Móviles */
 @media (max-width: 600px) {
     .construccionHero {
-        height: 80vh;
+        height: auto;
         min-height: 450px;
+        padding: 2rem 1rem;
     }
 
     .construccionContent h2 {
@@ -113,8 +126,12 @@
 
     .construccionContent ul {
         font-size: 16px;
-        text-align: left;
-        margin: 0 auto;
-        max-width: 300px;
+        padding-left: 1.25rem;
+        max-width: 320px;
+    }
+
+    .conoceMas {
+        font-size: 15px;
+        padding: 12px 24px;
     }
 }

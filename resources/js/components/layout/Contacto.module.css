@@ -103,10 +103,6 @@
     border: 0;
 }
 
-/*************************
- * FORMULARIO
- *************************/
-
 .formulario {
     background: white;
     padding: 2.5rem;
@@ -229,11 +225,6 @@ textarea {
     transform: translateY(0);
 }
 
-/*************************
- * RESPONSIVE
- *************************/
-
-/* Tablets */
 @media (max-width: 1024px) {
     .contactoGrid {
         gap: 2rem;
@@ -244,7 +235,6 @@ textarea {
     }
 }
 
-/* Mobile landscape y tablets pequeñas */
 @media (max-width: 900px) {
     .contactoGrid {
         grid-template-columns: 1fr;

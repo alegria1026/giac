@@ -1,15 +1,15 @@
 .hero {
     width: 100vw;
-    height: 70vh;
-    max-height: 900px;
-    min-height: 500px;
+    height: 85vh; /* Más largo */
+    max-height: 1000px;
+    min-height: 600px;
     color: white;
     overflow: hidden;
     margin-left: calc(50% - 50vw);
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0 32px;
+    padding: 0 2rem;
 }
 
 .hero::before {
@@ -37,52 +37,57 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 32px;
+    margin-left: 2rem; /* 👈 Alineado a la izquierda */
+    margin-right: auto;
 }
 
 .heroContent h1 {
-    margin: 0 0 24px 0;
-    font-size: clamp(50px, 6vw, 72px);
+    margin: 0 0 1.5rem 0;
+    font-size: clamp(42px, 6vw, 70px);
     line-height: 1.05;
     font-weight: 800;
     text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    text-align: left; /* 👈 */
 }
 
 .heroContent p {
     max-width: 900px;
     line-height: 1.6;
-    font-size: clamp(26px, 1.9vw, 20px);
+    font-size: clamp(18px, 2vw, 22px);
     text-shadow: 0 1px 4px rgba(0,0,0,0.7);
     text-align: justify;
 }
 
 .conoceMas {
-    margin-top: 32px;
-    padding: 12px 32px;
+    margin-top: 2rem;
+    padding: 14px 32px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     color: white;
     background: transparent;
     border: 2px solid white;
     border-radius: 999px;
     cursor: pointer;
-    transition: 0.3s ease;
-    width: 180px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: fit-content;
     text-align: center;
 }
 
 .conoceMas:hover {
     background: rgba(255, 255, 255, 0.15);
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
+/* Tablets */
 @media (max-width: 992px) {
     .hero {
-        padding: 0 20px;
+        height: 85vh;
+        min-height: 500px;
+        padding: 0 1.5rem;
     }
 
     .heroContent {
-        margin-left: 0;
+        margin-left: 1.5rem;
     }
 
     .heroContent h1 {
@@ -90,33 +95,44 @@
     }
 
     .heroContent p {
+        font-size: 18px;
+    }
+
+    .conoceMas {
         font-size: 16px;
     }
 }
 
+/* Móviles */
 @media (max-width: 600px) {
     .hero {
-        height: 80vh;
-        min-height: 450px;
+        height: auto;
+        min-height: 480px;
+        padding: 2rem 1rem;
         justify-content: center;
     }
 
     .heroContent {
         align-items: center;
         text-align: center;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
     }
 
     .heroContent h1 {
-        font-size: 32px;
+        text-align: center;
+        font-size: 30px;
     }
 
     .heroContent p {
         font-size: 16px;
+        text-align: justify;
     }
 
     .conoceMas {
-        font-size: 16px;
-        width: 160px;
+        font-size: 15px;
+        padding: 12px 24px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
-

@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Ingenieria.module.css';
-import imgFondo from '@/assets/ing.png';
 import { Link } from '@inertiajs/react';
 import videoHeader from '@/assets/ingenieria.mp4';
 
