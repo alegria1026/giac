@@ -25,7 +25,7 @@ export default function Ingenieria() {
                      </ul>
                 </ul>
 
-                <Link href="/projects/engineering" className={styles.conoceMas}>
+                <Link href="/engineering" className={styles.conoceMas}>
                     Ver más servicios
                 </Link>
 

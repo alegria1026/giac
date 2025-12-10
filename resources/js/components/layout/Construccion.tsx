@@ -18,7 +18,7 @@ export default function Construccion() {
                     <li>Construcción, mantenimiento y reparación de Tanques de Almacenamiento.</li>
                 </ul>
 
-                <Link href="/projects/construction" className={styles.conoceMas}>
+                <Link href="/construction" className={styles.conoceMas}>
                     Ver más servicios
                 </Link>
             </div>

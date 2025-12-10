@@ -27,7 +27,7 @@ export default function Hero() {
                     la medición, regulación, análisis y control de fludos.
                 </p>
 
-                <Link href="/nuestra-empresa" className={styles.conoceMas}>
+                <Link href="/projects/engineering" className={styles.conoceMas}>
                     Conocer más
                 </Link>
             </div>
