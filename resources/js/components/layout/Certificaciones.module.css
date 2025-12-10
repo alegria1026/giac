@@ -2,41 +2,41 @@
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-
     background-color: #EFEFEF;
-    color:black;
-
+    color: black;
     text-align: center;
-    padding: 60px 20px 80px;
+    padding: 5rem 1.5rem 6rem;
 }
 
 /* TÍTULO */
 .certifications h2 {
-    font-size: clamp(45px, 6vw, 70px);
-    margin-bottom: 20px;
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 1.5rem;
     font-weight: 800;
-
 }
 
+/* TEXTO DESCRIPTIVO */
 .certifications p {
-    font-size: clamp(26px, 2vw, 22px);
+    font-size: clamp(18px, 2vw, 22px);
     font-weight: 300;
-    margin-bottom: 50px;
-    color:black;
-
-
+    margin-bottom: 3rem;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* CONTENEDOR DE LOGOS */
 .logos {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
-    padding-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 4rem;
+    padding-bottom: 3rem;
 }
 
 .logos img {
-    width: 190px;
+    width: 180px;
     height: auto;
     opacity: 0.95;
     transition: 0.3s ease;
@@ -47,34 +47,67 @@
     transform: scale(1.05);
 }
 
+/* BOTÓN */
 .conoceMas {
-    padding: 12px 32px;
+    padding: 14px 32px;
     font-size: 18px;
-    font-weight: 500;
-
+    font-weight: 600;
     color: black;
     background: white;
-
     border: 2px solid white;
     border-radius: 999px;
-
     cursor: pointer;
-    transition: 0.3s ease;
-
-    width: 360px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: fit-content;
     margin: 0 auto;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    display: block;
 }
 
 .conoceMas:hover {
     background: rgba(255, 255, 255, 0.85);
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
-@media (max-width: 700px) {
+/* TABLETS */
+@media (max-width: 992px) {
     .logos {
-        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .certifications p {
+        font-size: 18px;
+        padding: 0 1rem;
+    }
+}
+
+/* MÓVILES */
+@media (max-width: 600px) {
+    .certifications {
+        padding: 4rem 1rem 5rem;
+    }
+
+    .certifications h2 {
+        font-size: 30px;
+    }
+
+    .certifications p {
+        font-size: 16px;
+    }
+
+    .logos {
         gap: 2rem;
+        justify-content: center;
+    }
+
+    .logos img {
+        width: 140px;
+        flex: 1 1 45%; /* 🔥 Esto logra el "2 y 1" en móviles */
+        max-width: 45%;
+    }
+
+    .conoceMas {
+        font-size: 16px;
+        padding: 12px 24px;
     }
 }
