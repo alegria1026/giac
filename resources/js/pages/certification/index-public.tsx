@@ -37,39 +37,30 @@ export default function CertificationsIndex({ certifications }: Props) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
                     {/* ✔ CERTIFICACIONES MANUALES */}
-                    <div className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition">
-                        <CertificationCard
-                            name="ISO 9001:2015"
-                            image="/storage/certifications/iso9001.png"
-                        />
-                    </div>
+                    <CertificationCard
+                        name="ISO 9001:2015"
+                        image="/storage/certifications/iso9001.png"
+                    />
 
-                    <div className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition">
-                        <CertificationCard
-                            name="ISO 14001:2015"
-                            image="/storage/certifications/iso14001.png"
-                        />
-                    </div>
+                    <CertificationCard
+                        name="ISO 14001:2015"
+                        image="/storage/certifications/iso14001.png"
+                    />
 
-                    <div className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition">
-                        <CertificationCard
-                            name="ISO 45001:2018"
-                            image="/storage/certifications/iso45001.png"
-                        />
-                    </div>
+                    <CertificationCard
+                        name="ISO 45001:2018"
+                        image="/storage/certifications/iso45001.png"
+                    />
 
                     {/* ✔ CERTIFICACIONES DEL BACKEND */}
                     {certifications.map((cert) => (
-                        <div
+                        <CertificationCard
                             key={cert.id}
-                            className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition"
-                        >
-                            <CertificationCard
-                                name={cert.name}
-                                image={cert.attached_file}
-                            />
-                        </div>
+                            name={cert.name}
+                            image={cert.attached_file}
+                        />
                     ))}
+
                 </div>
 
             </div>
