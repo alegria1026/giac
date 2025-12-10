@@ -3,7 +3,7 @@ import { Head, useForm } from "@inertiajs/react";
 import { useState } from "react";
 import { type BreadcrumbItem } from "@/types";
 
-interface Service {
+interface Project {
     id: number;
     name: string;
     description: string;
@@ -12,24 +12,24 @@ interface Service {
 }
 
 interface Props {
-    service: Service;
+    project: Project;
 }
 
-export default function ShowService({ service }: Props) {
+export default function ShowProject({ project }: Props) {
     const breadcrumbs: BreadcrumbItem[] = [
         { title: "Proyectos", href: "/projects" },
-        { title: `Editar proyecto #${service.id}`, href: `/services/${service.id}` },
+        { title: `Editar proyecto #${project.id}`, href: `/projects/${project.id}` },
     ];
 
     const { data, setData, patch, delete: destroy } = useForm({
-        name: service.name,
-        description: service.description,
-        category: service.category,
+        name: project.name,
+        description: project.description,
+        category: project.category,
         attached_file: null,
     });
 
-    const [preview, setPreview] = useState<string | null>(service.attached_file ?? null);
-    const [hasImage, setHasImage] = useState<boolean>(!!service.attached_file); // 👈 control interno para saber si hay imagen
+    const [preview, setPreview] = useState<string | null>(project.attached_file ?? null);
+    const [hasImage, setHasImage] = useState<boolean>(!!project.attached_file);
     const [message, setMessage] = useState(["Actualiza los datos necesarios del servicio.", true]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +37,7 @@ export default function ShowService({ service }: Props) {
         if (file) {
             setData("attached_file", file);
             setPreview(URL.createObjectURL(file));
-            setHasImage(true); // 👈 hay imagen nueva
+            setHasImage(true);
         }
     };
 
@@ -55,28 +55,28 @@ export default function ShowService({ service }: Props) {
             data.name.trim() === "" ||
             data.description.trim() === "" ||
             data.category === "" ||
-            !hasImage
+            (!hasImage && !project.attached_file)
         ) {
             setMessage(["Todos los campos son obligatorios.", false]);
             return;
         }
 
-        patch(`/services/${service.id}`, { forceFormData: true });
+        patch(`/projects/${project.id}`, { forceFormData: data.attached_file !== null });
     };
 
     const handleDelete = () => {
         if (confirm("¿Estás seguro de eliminar este proyecto?")) {
-            destroy(`/services/${service.id}`);
+            destroy(`/projects/${project.id}`);
         }
     };
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title={`Editar servicio`} />
+            <Head title={`Editar proyecto`} />
 
             <div className="bg-white w-full h-full flex items-center justify-center">
                 <div className="lg:w-5/12 w-11/12 bg-white rounded-lg">
-                    <h2 className="font-bold text-center text-2xl">Editar servicio</h2>
+                    <h2 className="font-bold text-center text-2xl">Editar proyecto</h2>
 
                     {/* Nombre */}
                     <div className="mt-2">

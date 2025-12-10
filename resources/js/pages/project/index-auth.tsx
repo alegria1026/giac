@@ -1,12 +1,14 @@
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem, type SharedData } from '@/types';
 import { Head, usePage, router } from '@inertiajs/react';
-import ServicesTable from '@/components/services-table';
+import ProjectsTable from '@/components/projects-table';
 
 interface Service {
     id: number | string;
     name: string;
     description: string;
+    category: 'Ingeniería' | 'Construcción';
+    attached_file: string;
 }
 
 interface PaginatedServices {
@@ -15,7 +17,8 @@ interface PaginatedServices {
 }
 
 interface Props {
-    projects: PaginatedServices;
+    engineering: PaginatedServices;
+    construction: PaginatedServices;
 }
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -25,7 +28,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Index({ projects }: Props) {
+export default function Index({ engineering, construction }: Props) {
     const { auth } = usePage<SharedData>().props;
     const name = auth.user.name;
 
@@ -65,7 +68,9 @@ export default function Index({ projects }: Props) {
                     </button>
                 </div>
 
-                <ServicesTable title="Lista de proyectos" services={projects} />
+                <ProjectsTable title="Proyectos de Ingeniería" projects={engineering} />
+
+                <ProjectsTable title="Proyectos de Construcción" projects={construction} />
             </div>
         </AppLayout>
     );
