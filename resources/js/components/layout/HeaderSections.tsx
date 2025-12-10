@@ -37,7 +37,7 @@ export default function HeaderSections() {
 
             {/* NAV */}
             <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ""}`}>
-                <Link href="/nosotros" className={styles.navLink}>
+                <Link href="/us" className={styles.navLink}>
                     Nosotros
                 </Link>
 
@@ -45,8 +45,13 @@ export default function HeaderSections() {
                     Ingeniería
                 </Link>
 
+
                 <Link href="/construction" className={styles.navLink}>
                     Construcción
+                </Link>
+
+                <Link href="/projects/engineering" className={styles.navLink}>
+                    Proyectos
                 </Link>
 
                 <Link href="/certifications/public" className={styles.navLink}>
@@ -57,7 +62,7 @@ export default function HeaderSections() {
                     Contacto
                 </Link>
 
-                {/* AUTH */}
+                {/* AUTH
                 {auth.user ? (
                     <Link href={dashboard()} className={styles.authBtn}>
                         Dashboard
@@ -67,6 +72,7 @@ export default function HeaderSections() {
                         Log in
                     </Link>
                 )}
+                 */}
             </nav>
         </header>
     );

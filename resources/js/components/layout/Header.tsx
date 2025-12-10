@@ -35,9 +35,17 @@ export default function Header() {
                     Nosotros
                 </button>
 
+                <Link href="/projects/engineering" className={styles.navLink}>
+                    Proyectos
+                </Link>
+
                 <button onClick={() => scrollToSection("ingenieria")} className={styles.navLink}>
                     Ingeniería
                 </button>
+
+                <Link href="/projects/engineering" className={styles.navLink}>
+                    Proyectos
+                </Link>
 
                 <button onClick={() => scrollToSection("construccion")} className={styles.navLink}>
                     Construcción
@@ -56,24 +64,24 @@ export default function Header() {
                 </button>
 
 
-                {auth.user ? (
+                {/*  {auth.user ? (
                     <Link href={dashboard()} className={styles.authBtn}>
                         Dashboard
                     </Link>
                 ) : (
                     <>
-                        <Link
+                         <Link
                             href={login()}
                             className={`${styles.authBtn} ${styles.loginBtn}`}
                         >
                             Log in
                         </Link>
 
-                        {/* <Link href={register()} className={styles.authBtn}>
+                        <Link href={register()} className={styles.authBtn}>
                             Register
-                        </Link> */}
+                        </Link>
                     </>
-                )}
+                )}*/}
 
             </nav>
         </header>
