@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { Link, usePage } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 import styles from "./Header.module.css";
 import logo from "@/assets/logogiac.svg";
-import { dashboard, login, register } from "@/routes";
-import { type SharedData } from "@/types";
 import MenuIcon from "@/components/icons/MenuIcon";
 
 export default function Header() {
-    const { auth } = usePage<SharedData>().props;
     const [isOpen, setIsOpen] = useState(false);
 
     const scrollToSection = (id: string) => {
@@ -35,21 +32,17 @@ export default function Header() {
                     Nosotros
                 </button>
 
-                <Link href="/projects/engineering" className={styles.navLink}>
-                    Proyectos
-                </Link>
-
                 <button onClick={() => scrollToSection("ingenieria")} className={styles.navLink}>
                     Ingeniería
                 </button>
 
-                <Link href="/projects/engineering" className={styles.navLink}>
-                    Proyectos
-                </Link>
-
                 <button onClick={() => scrollToSection("construccion")} className={styles.navLink}>
                     Construcción
                 </button>
+
+                <Link href="/projects/engineering" className={styles.navLink}>
+                    Proyectos
+                </Link>
 
                 <button onClick={() => scrollToSection("certificaciones")} className={styles.navLink}>
                     Certificaciones
@@ -62,26 +55,6 @@ export default function Header() {
                 <button onClick={() => scrollToSection("contacto")} className={styles.navLink}>
                     Contacto
                 </button>
-
-
-                {/*  {auth.user ? (
-                    <Link href={dashboard()} className={styles.authBtn}>
-                        Dashboard
-                    </Link>
-                ) : (
-                    <>
-                         <Link
-                            href={login()}
-                            className={`${styles.authBtn} ${styles.loginBtn}`}
-                        >
-                            Log in
-                        </Link>
-
-                        <Link href={register()} className={styles.authBtn}>
-                            Register
-                        </Link>
-                    </>
-                )}*/}
 
             </nav>
         </header>
