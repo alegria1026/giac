@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "@inertiajs/react";
 import styles from "./Header.module.css";
 import logo from "@/assets/logogiac.svg";
@@ -6,6 +6,20 @@ import MenuIcon from "@/components/icons/MenuIcon";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
@@ -14,9 +28,8 @@ export default function Header() {
         }
     };
 
-
     return (
-        <header className={styles.mainHeader}>
+        <header className={`${styles.mainHeader} ${isScrolled ? styles.scrolled : ""}`}>
             <div className={styles.logo}>
                 <Link href="/">
                     <img src={logo} alt="Giac oil & gas" className={styles.logoImg} />
@@ -55,7 +68,6 @@ export default function Header() {
                 <button onClick={() => scrollToSection("contacto")} className={styles.navLink}>
                     Contacto
                 </button>
-
             </nav>
         </header>
     );
