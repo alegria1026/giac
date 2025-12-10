@@ -2,15 +2,17 @@ import { Head } from "@inertiajs/react";
 import ServiceCard from "@/components/service-card";
 import Header from '@/components/layout/Header';
 
-interface Service {
-    id: number | string;
+interface Project {
+    id: number;
+    user_id: number;
     name: string;
     description: string;
+    category: "Ingeniería" | "Construcción";
     attached_file: string;
 }
 
 interface Props {
-    construction: Service[];
+    construction: Project[];
 }
 
 export default function IndexConstruction({ construction }: Props) {
@@ -35,15 +37,16 @@ export default function IndexConstruction({ construction }: Props) {
                     </button>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {construction.map((service) => (
+                    {construction.map((project) => (
                         <div
-                            key={service.id}
+                            key={project.id}
                             className="bg-white border rounded-xl shadow-sm p-4 hover:shadow-md transition"
                         >
                             <ServiceCard
-                                name={service.name}
-                                description={service.description}
-                                image={service.attached_file}
+                                key={project.id}
+                                name={project.name}
+                                description={project.description}
+                                image={project.attached_file}
                             />
                         </div>
                     ))}
