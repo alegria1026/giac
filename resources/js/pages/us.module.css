@@ -1,0 +1,86 @@
+/* ==== SECCIÓN GENERAL ==== */
+.empresa {
+    background: #ffffff;
+    color: #000;
+    padding: 3rem 1rem 4rem;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+/* ==== TÍTULO ==== */
+.empresa h2 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* ==== TEXTO SUPERIOR ==== */
+.intro {
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* ==== TARJETAS ==== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    text-align: center;
+    border: 1px solid #e6e6e6;
+}
+
+.iconImg {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 1rem;
+}
+
+/* Título de tarjeta */
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Texto de tarjeta */
+.card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 1100px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .empresa h2 {
+        font-size: 32px;
+    }
+
+    .intro {
+        font-size: 16px;
+    }
+}
