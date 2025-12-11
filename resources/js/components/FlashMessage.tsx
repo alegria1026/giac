@@ -18,9 +18,13 @@ export default function FlashMessage() {
 
     useEffect(() => {
         if (flash.status || flash.error) {
-            setVisible(true);
+            const timeoutId = setTimeout(() => setVisible(true), 0);
             const timer = setTimeout(() => setVisible(false), 4000);
-            return () => clearTimeout(timer);
+
+            return () => {
+                clearTimeout(timeoutId);
+                clearTimeout(timer);
+            };
         } else {
             setVisible(false);
         }
