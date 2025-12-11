@@ -22,10 +22,10 @@ class ContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => ['required', 'string', 'max:255'],
+            'nombre' => ['required', 'string', 'max:255', "min:3"],
             'empresa' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'descripcion' => ['required', 'string', 'max:2000'],
+            'descripcion' => ['required', 'string', 'max:2000', 'min:3'],
         ];
     }
 
@@ -40,6 +40,7 @@ class ContactRequest extends FormRequest
             'nombre.required' => 'El nombre es obligatorio.',
             'nombre.string' => 'El nombre debe ser un texto.',
             'nombre.max' => 'El nombre no puede tener más de 255 caracteres.',
+            'nombre.min' => 'El nombre debe tener al menos 3 caracteres.',
 
             'empresa.string' => 'La empresa debe ser un texto.',
             'empresa.max' => 'La empresa no puede tener más de 255 caracteres.',
@@ -51,6 +52,7 @@ class ContactRequest extends FormRequest
             'descripcion.required' => 'La descripción es obligatoria.',
             'descripcion.string' => 'La descripción debe ser un texto.',
             'descripcion.max' => 'La descripción no puede tener más de 2000 caracteres.',
+            'descripcion.min' => 'La descripción debe tener al menos 3 caracteres.',
         ];
     }
 }

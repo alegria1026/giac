@@ -1,6 +1,6 @@
 import AppLayout from "@/layouts/app-layout";
 import { Head, useForm } from "@inertiajs/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { type BreadcrumbItem } from "@/types";
 
 interface Service {
@@ -25,10 +25,24 @@ export default function ShowService({ service }: Props) {
         name: service.name,
         description: service.description,
         category: service.category,
-        attached_file: null,
+        attached_file: null as File | null,
     });
 
     const [preview, setPreview] = useState<string | null>(service.attached_file ?? null);
+
+    // Convertir la imagen existente a File al cargar el componente
+    useEffect(() => {
+        if (service.attached_file && !data.attached_file) {
+            fetch(service.attached_file)
+                .then(res => res.blob())
+                .then(blob => {
+                    const fileName = service.attached_file!.split('/').pop() || 'image.jpg';
+                    const file = new File([blob], fileName, { type: blob.type });
+                    setData("attached_file", file);
+                })
+                .catch(err => console.error('Error cargando imagen:', err));
+        }
+    }, [service.attached_file]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];

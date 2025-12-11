@@ -9,7 +9,7 @@ export default function CreateProject() {
         { title: "Crear proyecto", href: "/projects/create" },
     ];
 
-    const { data, setData, post } = useForm({
+    const { data, setData, post, errors, processing } = useForm({
         name: "",
         description: "",
         category: "",
@@ -17,7 +17,6 @@ export default function CreateProject() {
     });
 
     const [preview, setPreview] = useState(null);
-    const [message, setMessage] = useState(["Completa todos los campos antes de enviar.", true]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -35,15 +34,6 @@ export default function CreateProject() {
     };
 
     const handleSubmit = () => {
-        if (
-            data.name.trim() === "" ||
-            data.description.trim() === "" ||
-            data.category === ""
-        ) {
-            setMessage(["Todos los campos son obligatorios.", false]);
-            return;
-        }
-
         post("/projects", {
             forceFormData: true,
         });
@@ -68,6 +58,7 @@ export default function CreateProject() {
                             value={data.name}
                             onChange={(e) => setData("name", e.target.value)}
                         />
+                        {errors.name && <span className="text-red-600 text-sm">{errors.name}</span>}
                     </div>
 
                     {/* Descripción */}
@@ -80,9 +71,10 @@ export default function CreateProject() {
                             value={data.description}
                             onChange={(e) => setData("description", e.target.value)}
                         ></textarea>
+                        {errors.description && <span className="text-red-600 text-sm">{errors.description}</span>}
                     </div>
 
-                    {/* category */}
+                    {/* Área */}
                     <div className="mt-2">
                         <label htmlFor="category">Área</label>
                         <select
@@ -95,6 +87,7 @@ export default function CreateProject() {
                             <option value="Ingeniería">Ingeniería</option>
                             <option value="Construcción">Construcción</option>
                         </select>
+                        {errors.category && <span className="text-red-600 text-sm">{errors.category}</span>}
                     </div>
 
                     {/* Archivo */}
@@ -133,13 +126,9 @@ export default function CreateProject() {
                                 </div>
                             )}
                         </div>
-                    </div>
-
-                    {/* Mensaje */}
-                    <div className="mt-2">
-                        <small className={message[1] ? "text-gray-600" : "text-red-600"}>
-                            {message[0]}
-                        </small>
+                        {errors.attached_file && (
+                            <span className="text-red-600 text-sm">{errors.attached_file}</span>
+                        )}
                     </div>
 
                     {/* Botones */}
@@ -154,8 +143,9 @@ export default function CreateProject() {
                         <button
                             onClick={handleSubmit}
                             className="px-3 py-2 rounded cursor-pointer bg-[#00326D] hover:bg-[#002956] text-white"
+                            disabled={processing}
                         >
-                            Crear proyecto
+                            {processing ? "Creando..." : "Crear proyecto"}
                         </button>
                     </div>
                 </div>

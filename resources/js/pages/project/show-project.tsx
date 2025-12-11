@@ -1,6 +1,6 @@
 import AppLayout from "@/layouts/app-layout";
 import { Head, useForm } from "@inertiajs/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { type BreadcrumbItem } from "@/types";
 
 interface Project {
@@ -21,47 +21,48 @@ export default function ShowProject({ project }: Props) {
         { title: `Editar proyecto #${project.id}`, href: `/projects/${project.id}` },
     ];
 
-    const { data, setData, patch, delete: destroy } = useForm({
+    const { data, setData, patch, delete: destroy, errors, processing } = useForm({
         name: project.name,
         description: project.description,
         category: project.category,
-        attached_file: null,
+        attached_file: null as File | null,
     });
 
     const [preview, setPreview] = useState<string | null>(project.attached_file ?? null);
-    const [hasImage, setHasImage] = useState<boolean>(!!project.attached_file);
-    const [message, setMessage] = useState(["Actualiza los datos necesarios del servicio.", true]);
+
+    // Convertir la imagen existente a File al cargar el componente
+    useEffect(() => {
+        if (project.attached_file && !data.attached_file) {
+            fetch(project.attached_file)
+                .then(res => res.blob())
+                .then(blob => {
+                    const fileName = project.attached_file!.split('/').pop() || 'image.jpg';
+                    const file = new File([blob], fileName, { type: blob.type });
+                    setData("attached_file", file);
+                })
+                .catch(err => console.error('Error cargando imagen:', err));
+        }
+    }, [project.attached_file]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             setData("attached_file", file);
             setPreview(URL.createObjectURL(file));
-            setHasImage(true);
         }
     };
 
     const removeImage = () => {
         setPreview(null);
         setData("attached_file", null);
-        setHasImage(false);
-
         const input = document.getElementById("attached_file") as HTMLInputElement;
         if (input) input.value = "";
     };
 
     const handleSubmit = () => {
-        if (
-            data.name.trim() === "" ||
-            data.description.trim() === "" ||
-            data.category === "" ||
-            (!hasImage && !project.attached_file)
-        ) {
-            setMessage(["Todos los campos son obligatorios.", false]);
-            return;
-        }
-
-        patch(`/projects/${project.id}`, { forceFormData: data.attached_file !== null });
+        patch(`/projects/${project.id}`, {
+            forceFormData: true,
+        });
     };
 
     const handleDelete = () => {
@@ -88,6 +89,7 @@ export default function ShowProject({ project }: Props) {
                             value={data.name}
                             onChange={(e) => setData("name", e.target.value)}
                         />
+                        {errors.name && <span className="text-red-600 text-sm">{errors.name}</span>}
                     </div>
 
                     {/* Descripción */}
@@ -99,6 +101,7 @@ export default function ShowProject({ project }: Props) {
                             value={data.description}
                             onChange={(e) => setData("description", e.target.value)}
                         ></textarea>
+                        {errors.description && <span className="text-red-600 text-sm">{errors.description}</span>}
                     </div>
 
                     {/* Área */}
@@ -114,6 +117,7 @@ export default function ShowProject({ project }: Props) {
                             <option value="Ingeniería">Ingeniería</option>
                             <option value="Construcción">Construcción</option>
                         </select>
+                        {errors.category && <span className="text-red-600 text-sm">{errors.category}</span>}
                     </div>
 
                     {/* Imagen */}
@@ -152,12 +156,9 @@ export default function ShowProject({ project }: Props) {
                                 </div>
                             )}
                         </div>
-                    </div>
-
-                    <div className="mt-2">
-                        <small className={message[1] ? "text-gray-600" : "text-red-600"}>
-                            {message[0]}
-                        </small>
+                        {errors.attached_file && (
+                            <span className="text-red-600 text-sm">{errors.attached_file}</span>
+                        )}
                     </div>
 
                     <div className="flex justify-end gap-2 mt-4">
@@ -170,8 +171,9 @@ export default function ShowProject({ project }: Props) {
                         <button
                             onClick={handleSubmit}
                             className="px-3 py-2 rounded cursor-pointer bg-[#00326D] hover:bg-[#002956] text-white"
+                            disabled={processing}
                         >
-                            Actualizar
+                            {processing ? "Actualizando..." : "Actualizar"}
                         </button>
                     </div>
                 </div>

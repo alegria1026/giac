@@ -67,7 +67,6 @@ export default function ProjectsTable({ projects, title }: { projects: Paginated
                                 <tr className="border-b border-sidebar-border/70 dark:border-sidebar-border">
                                     <th className="px-4 py-3 font-semibold">Nombre</th>
                                     <th className="px-4 py-3 font-semibold">Descripción</th>
-                                    <th className="px-4 py-3 font-semibold">Categoría</th>
                                 </tr>
                             </thead>
 
@@ -80,7 +79,6 @@ export default function ProjectsTable({ projects, title }: { projects: Paginated
                                     >
                                         <td className="px-4 py-3 truncate max-w-xs">{p.name}</td>
                                         <td className="px-4 py-3">{p.description}</td>
-                                        <td className="px-4 py-3">{p.category}</td>
                                     </tr>
                                 ))}
                             </tbody>
