@@ -9,13 +9,12 @@ export default function CreateCertification() {
         { title: "Agregar nueva certificacion", href: "/certifications/create" },
     ];
 
-    const { data, setData, post } = useForm({
+    const { data, setData, post, errors, processing } = useForm({
         name: "",
         attached_file: null,
     });
 
     const [preview, setPreview] = useState(null);
-    const [message, setMessage] = useState(["Completa todos los campos antes de enviar.", true]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -33,11 +32,6 @@ export default function CreateCertification() {
     };
 
     const handleSubmit = () => {
-        if (data.name.trim() === "") {
-            setMessage(["El nombre es obligatorio.", false]);
-            return;
-        }
-        //checar en base a mi andpoint
         post("/certifications", {
             forceFormData: true,
         });
@@ -49,7 +43,7 @@ export default function CreateCertification() {
 
             <div className="bg-white w-full h-full flex items-center justify-center">
                 <div className="lg:w-5/12 w-11/12 bg-white rounded-lg">
-                    <h2 className="font-bold text-center text-2xl">Crear nueva certificacion</h2>
+                    <h2 className="font-bold text-center text-2xl">Crear nueva certificación</h2>
 
                     {/* Nombre */}
                     <div className="mt-2">
@@ -57,30 +51,31 @@ export default function CreateCertification() {
                         <input
                             type="text"
                             id="name"
-                            placeholder="Ej. certificacion Iso 9001"
+                            placeholder="Ej. certificación ISO 9001"
                             className="w-full outline-0 px-2 py-2 border border-gray-400 rounded-sm"
                             value={data.name}
                             onChange={(e) => setData("name", e.target.value)}
                         />
+                        {errors.name && <span className="text-red-600 text-sm">{errors.name}</span>}
                     </div>
 
                     {/* Archivo */}
                     <div className="mt-2">
-                        <label>Imagen</label>
+                        <label>Archivo</label>
                         <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer hover:bg-gray-50 transition relative">
                             <input
                                 id="attached_file"
                                 type="file"
-                                accept="image/*"
+                                accept="image/*,.pdf"
                                 className="hidden"
                                 onChange={handleImageChange}
                             />
 
                             {!preview && (
                                 <label htmlFor="attached_file" className="cursor-pointer block">
-                                    <span className="text-[#00326D] underline">Sube una imagen</span> o arrastra y suelta
+                                    <span className="text-[#00326D] underline">Sube un archivo</span> o arrastra y suelta
                                     <br />
-                                    <span className="text-gray-400 text-xs">PNG, JPG (hasta 5MB)</span>
+                                    <span className="text-gray-400 text-xs">PNG, JPG, PDF (hasta 5MB)</span>
                                 </label>
                             )}
 
@@ -100,13 +95,9 @@ export default function CreateCertification() {
                                 </div>
                             )}
                         </div>
-                    </div>
-
-                    {/* Mensaje */}
-                    <div className="mt-2">
-                        <small className={message[1] ? "text-gray-600" : "text-red-600"}>
-                            {message[0]}
-                        </small>
+                        {errors.attached_file && (
+                            <span className="text-red-600 text-sm">{errors.attached_file}</span>
+                        )}
                     </div>
 
                     {/* Botones */}
@@ -121,8 +112,9 @@ export default function CreateCertification() {
                         <button
                             onClick={handleSubmit}
                             className="px-3 py-2 rounded cursor-pointer bg-[#00326D] hover:bg-[#002956] text-white"
+                            disabled={processing}
                         >
-                            Agregar nueva certificacion
+                            {processing ? "Guardando..." : "Agregar nueva certificación"}
                         </button>
                     </div>
                 </div>
