@@ -28,7 +28,9 @@ export default function Us() {
 
                 <div className={styles.card}>
                     <img src={mision} alt="Misión" className={styles.iconImg} />
+                    <br></br>
                     <h3>Misión</h3>
+
                     <p>
                         Ser un grupo de profesionales visionarios y creativos,
                         enfocados en la satisfacción de nuestros clientes mediante
@@ -39,7 +41,9 @@ export default function Us() {
 
                 <div className={styles.card}>
                     <img src={vision} alt="Visión" className={styles.iconImg} />
+                    <br></br>
                     <h3>Visión</h3>
+
                     <p>
                         Consolidarnos como una empresa especializada, líder en el
                         mercado energético nacional, que impulse el desarrollo mediante
@@ -49,7 +53,9 @@ export default function Us() {
 
                 <div className={styles.card}>
                     <img src={valores} alt="Valores" className={styles.iconImg} />
+                    <br></br>
                     <h3>Valores</h3>
+
                     <p>
                         Integridad, compromiso, responsabilidad, eficiencia,
                         transparencia, innovación y mejora continua. Estos valores
@@ -59,7 +65,9 @@ export default function Us() {
 
                 <div className={styles.card}>
                     <img src={objetivo} alt="Objetivo" className={styles.iconImg} />
+                    <br></br>
                     <h3>Objetivo</h3>
+
                     <p>
                         Desarrollar proyectos de ingeniería y energía con los más
                         altos estándares de calidad y seguridad, ofreciendo
