@@ -17,17 +17,20 @@ export default function FlashMessage() {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        if (flash.status || flash.error) {
-            const timeoutId = setTimeout(() => setVisible(true), 0);
-            const timer = setTimeout(() => setVisible(false), 4000);
+        let timeoutId: NodeJS.Timeout;
+        let timer: NodeJS.Timeout;
 
-            return () => {
-                clearTimeout(timeoutId);
-                clearTimeout(timer);
-            };
+        if (flash.status || flash.error) {
+            timeoutId = setTimeout(() => setVisible(true), 0);
+            timer = setTimeout(() => setVisible(false), 4000);
         } else {
-            setVisible(false);
+            timeoutId = setTimeout(() => setVisible(false), 0);
         }
+
+        return () => {
+            clearTimeout(timeoutId);
+            clearTimeout(timer);
+        };
     }, [flash.timestamp, flash.status, flash.error]);
 
     if (!visible || (!flash.status && !flash.error)) {
