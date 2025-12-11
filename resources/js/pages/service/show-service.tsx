@@ -21,7 +21,7 @@ export default function ShowService({ service }: Props) {
         { title: `Editar servicio #${service.id}`, href: `/services/${service.id}` },
     ];
 
-    const { data, setData, patch, delete: destroy } = useForm({
+    const { data, setData, patch, delete: destroy, errors, processing } = useForm({
         name: service.name,
         description: service.description,
         category: service.category,
@@ -29,39 +29,26 @@ export default function ShowService({ service }: Props) {
     });
 
     const [preview, setPreview] = useState<string | null>(service.attached_file ?? null);
-    const [hasImage, setHasImage] = useState<boolean>(!!service.attached_file); // 👈 control interno para saber si hay imagen
-    const [message, setMessage] = useState(["Actualiza los datos necesarios del servicio.", true]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             setData("attached_file", file);
             setPreview(URL.createObjectURL(file));
-            setHasImage(true); // 👈 hay imagen nueva
         }
     };
 
     const removeImage = () => {
         setPreview(null);
         setData("attached_file", null);
-        setHasImage(false);
-
         const input = document.getElementById("attached_file") as HTMLInputElement;
         if (input) input.value = "";
     };
 
     const handleSubmit = () => {
-        if (
-            data.name.trim() === "" ||
-            data.description.trim() === "" ||
-            data.category === "" ||
-            !hasImage
-        ) {
-            setMessage(["Todos los campos son obligatorios.", false]);
-            return;
-        }
-
-        patch(`/services/${service.id}`, { forceFormData: true });
+        patch(`/services/${service.id}`, {
+            forceFormData: true,
+        });
     };
 
     const handleDelete = () => {
@@ -88,6 +75,7 @@ export default function ShowService({ service }: Props) {
                             value={data.name}
                             onChange={(e) => setData("name", e.target.value)}
                         />
+                        {errors.name && <span className="text-red-600 text-sm">{errors.name}</span>}
                     </div>
 
                     {/* Descripción */}
@@ -99,6 +87,7 @@ export default function ShowService({ service }: Props) {
                             value={data.description}
                             onChange={(e) => setData("description", e.target.value)}
                         ></textarea>
+                        {errors.description && <span className="text-red-600 text-sm">{errors.description}</span>}
                     </div>
 
                     {/* Área */}
@@ -114,6 +103,7 @@ export default function ShowService({ service }: Props) {
                             <option value="Ingeniería">Ingeniería</option>
                             <option value="Construcción">Construcción</option>
                         </select>
+                        {errors.category && <span className="text-red-600 text-sm">{errors.category}</span>}
                     </div>
 
                     {/* Imagen */}
@@ -152,12 +142,9 @@ export default function ShowService({ service }: Props) {
                                 </div>
                             )}
                         </div>
-                    </div>
-
-                    <div className="mt-2">
-                        <small className={message[1] ? "text-gray-600" : "text-red-600"}>
-                            {message[0]}
-                        </small>
+                        {errors.attached_file && (
+                            <span className="text-red-600 text-sm">{errors.attached_file}</span>
+                        )}
                     </div>
 
                     <div className="flex justify-end gap-2 mt-4">
@@ -170,8 +157,9 @@ export default function ShowService({ service }: Props) {
                         <button
                             onClick={handleSubmit}
                             className="px-3 py-2 rounded cursor-pointer bg-[#00326D] hover:bg-[#002956] text-white"
+                            disabled={processing}
                         >
-                            Actualizar
+                            {processing ? "Actualizando..." : "Actualizar"}
                         </button>
                     </div>
                 </div>
