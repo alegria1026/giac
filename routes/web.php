@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -24,6 +25,8 @@ Route::get('/projects/engineering', [ProjectController::class, 'index'])->name('
 Route::get('/projects/construction', [ProjectController::class, 'index'])->name('projects.construction');
 
 Route::get('/certifications/public', [CertificationController::class, 'index'])->name('certifications.public');
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
