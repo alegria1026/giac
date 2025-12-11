@@ -36,18 +36,33 @@
 }
 
 .card {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    text-align: center;
-    border: 1px solid #e6e6e6;
+
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        border: 1px solid #e6e6e6;
+
+        /* 🔥 NUEVO: centrado total */
+        display: flex;
+        flex-direction: column;
+        align-items: center;   /* centra horizontalmente */
+        text-align: center;    /* centra el texto */
+
+
 }
 
 .iconImg {
-    width: 75px;
-    height: 75px;
-    margin-bottom: 1rem;
+    .iconImg {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 1rem;
+        display: block;             /* 👈 necesario */
+        margin-left: auto;          /* 👈 centra horizontal */
+        margin-right: auto;         /* 👈 centra horizontal */
+    }
+
+
 }
 
 /* Título de tarjeta */
