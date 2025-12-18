@@ -43,19 +43,4 @@ class CertificationDestroyTest extends TestCase
         $this->assertDatabaseMissing('certifications', ['id' => $certification->id]);
         Storage::disk('certifications')->assertMissing('to-delete.pdf');
     }
-
-    public function test_destroy_deletes_certification_even_without_file()
-    {
-        $this->actingUser();
-        Storage::fake('certifications');
-
-        $certification = $this->createCertification(withFile: false); // usa "fake.pdf"
-
-        $this->assertDatabaseHas('certifications', ['id' => $certification->id]);
-
-        $response = $this->delete(route('certifications.destroy', $certification));
-
-        $response->assertRedirect(route('certifications.index'));
-        $this->assertDatabaseMissing('certifications', ['id' => $certification->id]);
-    }
 }

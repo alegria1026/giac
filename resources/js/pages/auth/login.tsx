@@ -78,7 +78,7 @@ export default function Login({
                                                 autoFocus
                                                 tabIndex={1}
                                                 autoComplete="email"
-                                                placeholder="example@gmail.com"
+                                                placeholder="correo@ejemplo.com"
                                                 className="h-12 bg-white border-gray-300"
                                             />
                                             <InputError message={errors.email} />
